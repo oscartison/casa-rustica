@@ -1,0 +1,152 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+p,
+ul {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+}
+
+/* FONTS */
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.black.otf');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.black-italic.otf');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.bold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.bold-italic.otf');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.extra-bold.otf');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.extra-bold-italic.otf');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.medium-italic.otf');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.light.otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.light-italic.otf');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.medium.otf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.medium-italic.otf');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.regular.otf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.thin.otf');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.thin-italic.otf');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.light.otf');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Metropolis';
+  src: url('../app/fonts/metropolis.light-italic.otf');
+  font-weight: 300;
+  font-style: italic;
+}

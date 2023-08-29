@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Visuals / timelineAnchor</title>
+    <g id="Visuals-/-timelineAnchor" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#FFFFFF" x="2" y="2" width="28" height="28"></rect>
+        <path d="M4.6862915,19.7712362 L6.5712915,19.7702915 L6.57190958,25.4280904 L12.2282915,25.4272915 L12.2287638,27.3137085 L4.6862915,27.3137085 L4.6862915,19.7712362 Z M27.3137085,19.7712362 L27.3137085,27.3137085 L19.7712362,27.3137085 L19.7702915,25.4272915 L25.4280904,25.4280904 L25.4272915,19.7702915 L27.3137085,19.7712362 Z M27.3137085,4.6862915 L27.3137085,12.2287638 L25.4272915,12.2282915 L25.4280904,6.57190958 L19.7702915,6.5712915 L19.7712362,4.6862915 L27.3137085,4.6862915 Z M12.2282915,6.5712915 L6.57190958,6.57190958 L6.5712915,12.2282915 L4.6862915,12.2287638 L4.6862915,4.6862915 L12.2287638,4.6862915 L12.2282915,6.5712915 Z" id="Combined-Shape" fill="#2F2E2E" fill-rule="nonzero" transform="translate(16, 16) rotate(-315) translate(-16, -16)"></path>
+        <circle id="Oval" fill="#E30613" cx="16" cy="16" r="4"></circle>
+    </g>
+</svg>
