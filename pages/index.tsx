@@ -1,5 +1,9 @@
 import Image from 'next/image';
 import styled from 'styled-components';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+import { useTranslation } from 'next-i18next';
+
 
 import Seo from '../components/_common/seo';
 import Logo from '../app/logos/logo-no-background.png';
@@ -25,17 +29,26 @@ const StyledLogo = styled(Image)`
 `;
 
 export default function LandingPage() {
+  const { t } = useTranslation('common');
+
   return (
     <>
       <Seo title="Casa Rustica" />
       <Container>
         <StyledLogo src={Logo} alt="logo" />
-        <Title> Coming Soon ...</Title>
+        <Title> {t('Coming Soon ...')}</Title>
       </Container>
     </>
   );
 }
 
-export async function getServerSideProps() {
-  return { props: {} };
+
+export async function getStaticProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, [
+        'common',
+      ])),
+    },
+  }
 }

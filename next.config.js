@@ -1,3 +1,6 @@
+const { i18n } = require('./next-i18next.config.js');
+
+
 module.exports = {
   webpack(config) {
     config.module.rules.push({
@@ -10,4 +13,5 @@ module.exports = {
   compiler: {
     styledComponents: true,
   },
+  i18n, 
 };
