@@ -11,11 +11,9 @@ import Logo from '../app/logos/logo-no-background.png';
 const Container = styled.div`
   height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 5rem;
+  display: grid;
+  grid-template: 1fr 1fr / auto auto auto;
+  padding-top: 10rem;
   background-color: #77d4fc;
 `;
 
@@ -23,9 +21,14 @@ const Title = styled.h1`
   font-size: 3rem;
 `;
 
+const Center = styled.div`
+  width: 100%;
+  display:flex;
+  justify-content:center;
+`
+
 const StyledLogo = styled(Image)`
-  height: 15rem;
-  width: 15rem;
+  width: 20rem;
 `;
 
 export default function LandingPage() {
@@ -35,8 +38,10 @@ export default function LandingPage() {
     <>
       <Seo title="Casa Rustica" />
       <Container>
-        <StyledLogo src={Logo} alt="logo" />
         <Title> {t('Coming Soon ...')}</Title>
+        <Center>
+        <StyledLogo src={Logo} alt="logo" />
+        </Center>
       </Container>
     </>
   );
