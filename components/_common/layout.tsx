@@ -17,7 +17,7 @@ const Layout = ({ children }) => {
   const {t} = useTranslation()
   return (
     <Main>
-      <HeaderResponsive links={[{ link: '/', label: t('home') },{ link: 'about', label: t('about') },{ link: 'pictures', label: t('pictures') },{ link: 'contact', label: t('contact') }]}/>
+      <HeaderResponsive links={[{ link: '/', label: t('home') },{ link: '/pictures', label: t('pictures') },{ link: '/contact', label: t('contact') }]}/>
       <Content>{children}</Content>
     </Main>
   );

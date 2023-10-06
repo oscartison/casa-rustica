@@ -1,48 +1,46 @@
-import Image from 'next/image';
 import styled from 'styled-components';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
-import { useTranslation } from 'next-i18next';
-
-
 import Seo from '../components/_common/seo';
-import Logo from '../app/logos/logo-no-background.png';
+import Home from '../app/images/house/house.jpeg'
+import { BackgroundImage, BackgroundImageProps } from '@mantine/core';
+import Presentation from '../components/presentation';
+import { useMediaQuery } from '@mantine/hooks';
 
-const Container = styled.div`
-  height: 100vh;
+const StyledBackImage = styled(BackgroundImage)<BackgroundImageProps>`
+height: calc(100vh - 3rem);
+  max-height: calc(100vh - 3rem);
   width: 100vw;
-  display: grid;
-  grid-template: 1fr 1fr / auto auto auto;
-  padding-top: 10rem;
-  background-color: #77d4fc;
+
+  margin-top: 3rem;
+
+  overflow-y: scroll;
+  backdrop-filter: blur(5px);
+  display:flex;
+  justify-content:center;
 `;
 
-const Title = styled.h1`
-  font-size: 3rem;
-`;
+const TextContainer = styled.div<{$isMobile: boolean}>`
+  width: 1000px;
+  margin-bottom: 5rem;
+  margin-top: ${props => props.$isMobile ? '0' : "8rem"};
 
-const Center = styled.div`
-  width: 100%;
+  min-height: fit-content;
+  background: rgba(255,255,255,0.8);
   display:flex;
   justify-content:center;
 `
 
-const StyledLogo = styled(Image)`
-  width: 20rem;
-`;
-
 export default function LandingPage() {
-  const { t } = useTranslation('common');
+  const isMobile = useMediaQuery('(max-width: 56.25em)');
 
   return (
     <>
       <Seo title="Casa Rustica" />
-      <Container>
-        <Title> {t('Coming Soon ...')}</Title>
-        <Center>
-        <StyledLogo src={Logo} alt="logo" />
-        </Center>
-      </Container>
+        <StyledBackImage src={Home.src}>
+        <TextContainer $isMobile={isMobile}>
+          <Presentation />
+        </TextContainer>
+        </StyledBackImage>
     </>
   );
 }
@@ -52,7 +50,7 @@ export async function getStaticProps({ locale }) {
   return {
     props: {
       ...(await serverSideTranslations(locale, [
-        'common',
+        'home','common'
       ])),
     },
   }

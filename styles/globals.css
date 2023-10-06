@@ -6,6 +6,9 @@ body {
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+
+@import "~react-image-gallery/styles/css/image-gallery.css";
+
 a {
   color: inherit;
   text-decoration: none;

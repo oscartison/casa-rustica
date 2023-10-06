@@ -7,13 +7,16 @@ import {
   Paper,
   Transition,
   rem,
+  NavLink,
+  PaperProps,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import * as React from 'react'
+import {useRouter} from 'next/router'; 
 import Logo from '../../app/logos/logo_name.png';
 import styled from 'styled-components';
 import Image from 'next/image';
 import { LanguagePicker } from './languageSwitcher';
+import Link from 'next/link';
 
 
 const HEADER_HEIGHT = rem(60);
@@ -33,11 +36,13 @@ const useStyles = createStyles((theme) => ({
     borderTopRightRadius: 0,
     borderTopLeftRadius: 0,
     borderTopWidth: 0,
+    paddingTop: '10rem',
     overflow: 'hidden',
     display: 'flex',
     flexDirection: 'column',
-    gap: rem(16),
+    gap: rem(48),
     alignItems: 'center',
+    minHeight: '100vh',
 
     [theme.fn.largerThan('sm')]: {
       display: 'none',
@@ -94,9 +99,15 @@ const useStyles = createStyles((theme) => ({
 const StyledLogo = styled(Image)`
   height: 2.5rem;
   width: 14rem;
-
-  
 `;
+
+const StyledPaper = styled(Paper)<PaperProps>`
+min-height:100vh ;
+`
+
+const Space = styled.div`
+  margin-top: 10rem;
+`
 
 interface HeaderResponsiveProps {
   links: { link: string; label: string }[];
@@ -104,17 +115,20 @@ interface HeaderResponsiveProps {
 
 export function HeaderResponsive({ links }: HeaderResponsiveProps) {
   const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = React.useState(links[0].link);
   const { classes, cx } = useStyles();
 
+  const router = useRouter() 
+  const active = router.pathname;
+
   const items = links.map((link) => (
-    <a
+    <Link
       key={link.label}
+      onClick={close}
       href={link.link}
       className={cx(classes.link, { [classes.linkActive]: active === link.link })}
     >
       {link.label}
-    </a>
+    </Link>
   ));
 
   return (
@@ -131,10 +145,12 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
 
         <Transition transition="pop-top-right" duration={200} mounted={opened}>
           {(styles) => (
-            <Paper className={classes.dropdown} withBorder style={styles}>
+            <StyledPaper className={classes.dropdown} withBorder style={styles}>
               {items}
+              <Space>
               <LanguagePicker />
-            </Paper>
+              </Space>
+            </StyledPaper>
           )}
         </Transition>
       </Container>

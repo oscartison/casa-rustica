@@ -5,7 +5,6 @@ import styled from 'styled-components';
 import Pictures from '../../components/pictures';
 
 import Seo from '../../components/_common/seo';
-import { ContactUs } from '../../components/contact';
 import { useMediaQuery } from '@mantine/hooks';
 
 const StyledBackImage = styled(BackgroundImage)<BackgroundImageProps>`
@@ -31,14 +30,14 @@ const TextContainer = styled.div<{$isMobile: boolean}>`
 `
 
 const Contact = () => {
-    const isMobile = useMediaQuery('(max-width: 56.25em)');
+  const isMobile = useMediaQuery('(max-width: 56.25em)');
 
   return (
     <>
     <Seo title="Casa Rustica" />
       <StyledBackImage src={Home.src}>
       <TextContainer $isMobile={isMobile}>
-        <ContactUs />
+        <Pictures />
       </TextContainer>
       </StyledBackImage>
   </>

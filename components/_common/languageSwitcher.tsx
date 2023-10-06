@@ -50,7 +50,7 @@ export function LanguagePicker() {
 
   const [opened, setOpened] = useState(false);
   const { classes } = useStyles({ opened });
-  const [selected, setSelected] = useState(data[0]);
+  const [selected, setSelected] = useState(data.find((el) => el.path === router.locale )?? data[0]);
   const items = data.map((item) => (
     <Menu.Item
       onClick={() => {
