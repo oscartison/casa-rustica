@@ -5,7 +5,7 @@ import classes from './ContactIcons.module.css';
 
 interface ContactIconProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {
   icon: typeof IconSun;
-  title: React.ReactNode;
+  title: string;
   description: React.ReactNode;
 }
 
