@@ -21,9 +21,8 @@ const StyledBackImage = styled(BackgroundImage)<BackgroundImageProps>`
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
   width: 1000px;
-  margin-bottom: 5rem;
   margin-top: ${props => props.$isMobile ? '0' : "8rem"};
-  min-height: fit-content;
+  height: fit-content;
   background: rgba(255,255,255,0.8);
   display:flex;
   justify-content:center;

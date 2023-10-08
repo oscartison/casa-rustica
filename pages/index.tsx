@@ -21,11 +21,10 @@ height: calc(100vh - 3rem);
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
   width: 1000px;
-  margin-bottom: 5rem;
   margin-top: ${props => props.$isMobile ? '0' : "8rem"};
 
-  min-height: fit-content;
   background: rgba(255,255,255,0.8);
+  height: fit-content;
   display:flex;
   justify-content:center;
 `
