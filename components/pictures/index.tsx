@@ -31,7 +31,8 @@ const Container = styled.div`
 `
 
 const StyledImageGalleryContainer = styled.div`
-    max-width: 1000px;
+    width: 1000px;
+    max-width: 100vh;
 `
 
 const images = [

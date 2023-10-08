@@ -25,8 +25,9 @@ WORKDIR /app
 # Copy only the production-ready files from the previous stage
 COPY --from=build /app/package.json /app/yarn.lock ./
 COPY --from=build /app/.next ./.next
+COPY --from=build /app/next.config.js /app/next-env.d.ts /app/next-i18next.config.js ./
 COPY --from=build /app/public ./public
-
+COPY --from=build /app/node_modules ./node_modules
 # Expose the port that the app will run on
 EXPOSE 3000
 
