@@ -5,6 +5,7 @@ import Home from '../app/images/house/house.jpeg'
 import { BackgroundImage, BackgroundImageProps } from '@mantine/core';
 import Presentation from '../components/presentation';
 import { useMediaQuery } from '@mantine/hooks';
+import { Metadata } from 'next';
 
 const StyledBackImage = styled(BackgroundImage)<BackgroundImageProps>`
 height: calc(100vh - 3rem);

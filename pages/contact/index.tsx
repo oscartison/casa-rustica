@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import Seo from '../../components/_common/seo';
 import { ContactUs } from '../../components/contact';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'next-i18next';
 
 const StyledBackImage = styled(BackgroundImage)<BackgroundImageProps>`
   height: calc(100vh - 3rem);
@@ -30,10 +31,11 @@ const TextContainer = styled.div<{$isMobile: boolean}>`
 
 const Contact = () => {
     const isMobile = useMediaQuery('(max-width: 56.25em)');
+    const {t} = useTranslation('common')
 
-  return (
-    <>
-    <Seo title="Casa Rustica" />
+    return (
+      <>
+      <Seo title={`Casa Rustica - ${t('contact')}`} />
       <StyledBackImage src={Home.src}>
       <TextContainer $isMobile={isMobile}>
         <ContactUs />

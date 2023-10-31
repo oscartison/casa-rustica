@@ -6,6 +6,7 @@ import Pictures from '../../components/pictures';
 
 import Seo from '../../components/_common/seo';
 import { useMediaQuery } from '@mantine/hooks';
+import { useTranslation } from 'react-i18next';
 
 const StyledBackImage = styled(BackgroundImage)<BackgroundImageProps>`
   height: calc(100vh - 3rem);
@@ -30,10 +31,11 @@ const TextContainer = styled.div<{$isMobile: boolean}>`
 
 const Contact = () => {
   const isMobile = useMediaQuery('(max-width: 56.25em)');
+ const {t} = useTranslation('common')
 
   return (
     <>
-    <Seo title="Casa Rustica" />
+    <Seo title={`Casa Rustica - ${t('pictures')}`} />
       <StyledBackImage src={Home.src}>
       <TextContainer $isMobile={isMobile}>
         <Pictures />

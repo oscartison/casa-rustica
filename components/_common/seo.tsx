@@ -33,7 +33,7 @@ const Seo = ({ title, description, keywords }: Props) => {
         name="keywords"
         content={
           keywords ??
-          'Casa, Rustica, huis, vakantie, De Haan, Le Coq, Location, huren, villa, beach, strand, zee, goedkoop, interessant, family, '
+          'Casa, Rustica, huis, vakantie, De Haan, Le Coq, Location, huren, villa, beach, strand, zee, goedkoop, interessant, family, familie, location, huren '
         }
       />
     </Head>
