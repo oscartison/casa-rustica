@@ -17,13 +17,13 @@ COPY . .
 RUN yarn run build
 
 # Stage 2: Create the production image
-FROM node:19-alpine AS production
+FROM node:20-alpine AS production
 
 # Set the working directory in the container
 WORKDIR /app
 
 # Copy only the production-ready files from the previous stage
-COPY --from=build /app/package.json /app/yarn.lock ./
+COPY --from=build /app/package.json /app/yarn.lock /app/.env  ./
 COPY --from=build /app/.next ./.next
 COPY --from=build /app/next.config.js /app/next-env.d.ts /app/next-i18next.config.js ./
 COPY --from=build /app/public ./public

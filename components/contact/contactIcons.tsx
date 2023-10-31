@@ -1,6 +1,6 @@
 import { Text, Box, Stack, rem } from '@mantine/core';
 import { IconSun, IconPhone, IconMapPin, IconAt } from '@tabler/icons-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import classes from './ContactIcons.module.css';
 
 interface ContactIconProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {

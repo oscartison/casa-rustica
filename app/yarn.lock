@@ -4205,9 +4205,9 @@
     "loose-envify" "^1.1.0"
     "scheduler" "^0.23.0"
 
-"react-i18next@^13.2.1":
+"next-i18next@^13.2.1":
   "integrity" "sha512-+nFUkbRByFwnrfDcYqvzBuaeZb+nACHx+fAWN/pZMddWOCJH5hoc21+Sa/N/Lqi6ne6/9wC/qRGOoQhJa6IkEQ=="
-  "resolved" "https://registry.npmjs.org/react-i18next/-/react-i18next-13.2.2.tgz"
+  "resolved" "https://registry.npmjs.org/next-i18next/-/next-i18next-13.2.2.tgz"
   "version" "13.2.2"
   dependencies:
     "@babel/runtime" "^7.22.5"

@@ -13,7 +13,7 @@ import { ContactIconsList } from './contactIcons';
 import classes from './ContactUs.module.css';
 import { useForm } from '@mantine/form';
 import * as React from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "next-i18next";
 import { useMediaQuery } from '@mantine/hooks';
 
 

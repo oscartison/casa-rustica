@@ -1,6 +1,6 @@
 import { List, Text, ThemeIcon, Title } from '@mantine/core';
 import { IconBeach, IconCircleCheck, IconCircleDashed, IconHome2, IconSun, IconUsersGroup } from '@tabler/icons-react';
-import { Trans, useTranslation } from 'react-i18next';
+import { Trans, useTranslation } from 'next-i18next';
 import styled, { css } from 'styled-components';
 
 const Container = styled.div`
