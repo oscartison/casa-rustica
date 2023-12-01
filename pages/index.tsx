@@ -1,33 +1,20 @@
 import styled from 'styled-components';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import Seo from '../components/_common/seo';
-import Home from '../app/images/house/house.jpeg'
-import { BackgroundImage, BackgroundImageProps } from '@mantine/core';
 import Presentation from '../components/presentation';
 import { useMediaQuery } from '@mantine/hooks';
-import { Metadata } from 'next';
+import HeaderPresentation from '../components/headerPresentation';
 
-const StyledBackImage = styled(BackgroundImage)<BackgroundImageProps>`
-height: calc(100vh - 3rem);
-  max-height: calc(100vh - 3rem);
-  width: 100vw;
 
-  margin-top: 3rem;
-
-  overflow-y: scroll;
-  backdrop-filter: blur(5px);
-  display:flex;
-  justify-content:center;
-`;
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
-  width: 1000px;
-  margin-top: ${props => props.$isMobile ? '0' : "8rem"};
-
+margin-top: 4rem;
   background: rgba(255,255,255,0.8);
-  height: fit-content;
   display:flex;
+  flex-direction: column;
   justify-content:center;
+  padding-bottom: 6rem;
+  
 `
 
 export default function LandingPage() {
@@ -35,12 +22,11 @@ export default function LandingPage() {
 
   return (
     <>
-      <Seo title="Casa Rustica" />
-        <StyledBackImage src={Home.src}>
+      <Seo title="Home - Casa Rustica" />
         <TextContainer $isMobile={isMobile}>
+          <HeaderPresentation />
           <Presentation />
         </TextContainer>
-        </StyledBackImage>
     </>
   );
 }

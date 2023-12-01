@@ -24,7 +24,7 @@ const HEADER_HEIGHT = rem(60);
 const useStyles = createStyles((theme) => ({
   root: {
     position: 'fixed',
-    zIndex: 1,
+    zIndex: 2,
   },
 
   dropdown: {
@@ -43,6 +43,7 @@ const useStyles = createStyles((theme) => ({
     gap: rem(48),
     alignItems: 'center',
     minHeight: '100vh',
+    maxHeight:'100vh',
 
     [theme.fn.largerThan('sm')]: {
       display: 'none',
@@ -106,7 +107,7 @@ min-height:100vh ;
 `
 
 const Space = styled.div`
-  margin-top: 10rem;
+  margin-top: 2rem;
 `
 
 interface HeaderResponsiveProps {

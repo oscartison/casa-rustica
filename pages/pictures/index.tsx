@@ -21,7 +21,6 @@ const StyledBackImage = styled(BackgroundImage)<BackgroundImageProps>`
 `;
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
-  width: 1000px;
   margin-top: ${props => props.$isMobile ? '0' : "8rem"};
   height: fit-content;
   background: rgba(255,255,255,0.8);
@@ -35,12 +34,10 @@ const Contact = () => {
 
   return (
     <>
-    <Seo title={`Casa Rustica - ${t('pictures')}`} />
-      <StyledBackImage src={Home.src}>
+    <Seo title={`${t('pictures')} - Casa Rustica`} />
       <TextContainer $isMobile={isMobile}>
         <Pictures />
       </TextContainer>
-      </StyledBackImage>
   </>
   );
 };

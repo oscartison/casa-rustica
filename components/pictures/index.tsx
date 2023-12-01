@@ -20,7 +20,10 @@ import Image18 from "../../app/images/house/18.jpeg";
 import Image19 from "../../app/images/house/19.jpeg";
 import { Space, Title } from "@mantine/core";
 import Image from "next/image";
-import { Carousel } from "@mantine/carousel";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import '@splidejs/react-splide/css';
+
+
 
 const Container = styled.div`
   padding: 3rem;
@@ -28,6 +31,7 @@ const Container = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   align-items: center;
+  max-width: 1000px;
 `;
 
 const images = [
@@ -114,21 +118,21 @@ const Pictures = () => {
   return (
     <Container>
       <Title>{t("house")}</Title>
-      <Carousel slideSize="80%" slideGap="md" loop align="center">
-        {images.map((el) => (
-          <Carousel.Slide>
+      <Splide options={ { rewind: true } } aria-label="React Splide Example">
+       {images.map((el) => (
+          <SplideSlide  key={el.original} >
             <Image width={1000} height={1000} alt="house" src={el.original} />
-          </Carousel.Slide>
+            </SplideSlide>
         ))}
-      </Carousel>
+      </Splide>
       <Title>{t("rooms")}</Title>
-      <Carousel slideSize="80%" slideGap="md" loop align="center">
-        {roomImages.map((el) => (
-          <Carousel.Slide>
-            <Image width={1000} height={1000} alt="house" src={el.original} />
-          </Carousel.Slide>
+      <Splide options={ { rewind: true } } aria-label="React Splide Example">
+      {roomImages.map((el) => (
+                    <SplideSlide key={el.original} >
+
+            <Image width={1000} height={1000} alt="house" src={el.original} /></SplideSlide>
         ))}
-      </Carousel>
+      </Splide>
     </Container>
   );
 };

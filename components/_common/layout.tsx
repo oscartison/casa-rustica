@@ -4,6 +4,7 @@ import { HeaderResponsive } from './header';
 
 const Main = styled.main`
   min-height: 100vh;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   font-family: 'Metropolis';

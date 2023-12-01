@@ -35,7 +35,7 @@ const Contact = () => {
 
     return (
       <>
-      <Seo title={`Casa Rustica - ${t('contact')}`} />
+      <Seo title={`${t('contact')} - Casa Rustica`} />
       <StyledBackImage src={Home.src}>
       <TextContainer $isMobile={isMobile}>
         <ContactUs />

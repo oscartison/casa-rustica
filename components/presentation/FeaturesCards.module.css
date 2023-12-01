@@ -1,0 +1,17 @@
+.title {
+  font-size: rem(34px);
+  font-weight: 900;
+
+}
+
+.description {
+  max-width: 37.5rem;
+  margin: auto;
+
+
+}
+
+.card {
+  border: 0.5rem solid light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));
+}
+
