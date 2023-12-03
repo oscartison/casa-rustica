@@ -22,6 +22,13 @@
     "message": "Message",
     "price": "Quel est le prix pour...",
     "send": "Envoyer le message",
-    "goToPictures": "Découvrir les photos"
-
+    "goToPictures": "Découvrir les photos",
+    "4 rooms": "4 chambres",
+    "Up to 10 people": "Jusqu'à 10 personnes",
+    "2 bathrooms": "2 salles de bains",
+    "1 bath and 2 showers": "1 baignoire et 2 douches",
+    "Animal friendly": "Animaux acceptés",
+    "Animals are allowed": "Les animaux sont autorisés",
+    "Wifi available": "Wifi disponible",
+    "+ TV and 24' monitor": "+ TV et moniteur 24 pouces"
 }

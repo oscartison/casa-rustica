@@ -55,8 +55,8 @@ const FeaturesCards= () =>  {
     ));
   
     return (
-      <Container maw={1000} size="lg" py="xl"> 
-        <SimpleGrid cols={isMobile ? 1 : 3} spacing="xl" mt={50}>
+      <Container className={classes.root} size="lg" py="xl"> 
+        <SimpleGrid className={classes.grid} cols={isMobile ? 1 : 3} spacing="xl" mt={50}>
           {features}
         </SimpleGrid>
       </Container>

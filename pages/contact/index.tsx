@@ -1,4 +1,4 @@
-import { BackgroundImage, BackgroundImageProps } from '@mantine/core';
+import { BackgroundImage, BackgroundImageProps, Container } from '@mantine/core';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Home from '../../app/images/house/house.jpeg'
 import styled from 'styled-components';
@@ -8,7 +8,7 @@ import { ContactUs } from '../../components/contact';
 import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'next-i18next';
 
-const StyledBackImage = styled(BackgroundImage)<BackgroundImageProps>`
+const StyledBackImage = styled(Container)<BackgroundImageProps>`
   height: calc(100vh - 3rem);
   max-height: calc(100vh - 3rem);
   width: 100vw;
@@ -24,7 +24,8 @@ const TextContainer = styled.div<{$isMobile: boolean}>`
   width: 1000px;
   margin-top: ${props => props.$isMobile ? '0' : "8rem"};
   height: fit-content;
-  background: rgba(255,255,255,0.8);
+  background-color: #fafcff;
+  border-radius: 1rem;
   display:flex;
   justify-content:center;
 `

@@ -4,6 +4,7 @@ import Seo from '../components/_common/seo';
 import Presentation from '../components/presentation';
 import { useMediaQuery } from '@mantine/hooks';
 import HeaderPresentation from '../components/headerPresentation';
+import StatsGrid from '../components/statistics';
 
 
 
@@ -26,6 +27,7 @@ export default function LandingPage() {
         <TextContainer $isMobile={isMobile}>
           <HeaderPresentation />
           <Presentation />
+          <StatsGrid />
         </TextContainer>
     </>
   );

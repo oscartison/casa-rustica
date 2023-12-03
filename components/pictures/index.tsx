@@ -14,18 +14,16 @@ import Image12 from "../../app/images/house/12.jpeg";
 import Image13 from "../../app/images/house/13.jpeg";
 import Image14 from "../../app/images/house/14.jpeg";
 import Image15 from "../../app/images/house/15.jpeg";
-import Image16 from "../../app/images/house/16.jpeg";
 import Image17 from "../../app/images/house/17.jpeg";
-import Image18 from "../../app/images/house/18.jpeg";
 import Image19 from "../../app/images/house/19.jpeg";
-import { Space, Title } from "@mantine/core";
+import { Container, Title } from "@mantine/core";
 import Image from "next/image";
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/react-splide/css';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 
 
-const Container = styled.div`
+const StContainer = styled(Container)`
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -115,25 +113,22 @@ const roomImages = [
 const Pictures = () => {
   const { t } = useTranslation("home");
 
-  return (
-    <Container>
-      <Title>{t("house")}</Title>
-      <Splide options={ { rewind: true } } aria-label="React Splide Example">
-       {images.map((el) => (
-          <SplideSlide  key={el.original} >
-            <Image width={1000} height={1000} alt="house" src={el.original} />
-            </SplideSlide>
-        ))}
-      </Splide>
-      <Title>{t("rooms")}</Title>
-      <Splide options={ { rewind: true } } aria-label="React Splide Example">
-      {roomImages.map((el) => (
-                    <SplideSlide key={el.original} >
 
-            <Image width={1000} height={1000} alt="house" src={el.original} /></SplideSlide>
+  return (
+    <StContainer >
+      <Title>{t("house")}</Title>
+      <Carousel dynamicHeight infiniteLoop autoFocus>
+       {images.map((el) => (
+          <Image width={1000} height={1000} alt="house" src={el.original} />
         ))}
-      </Splide>
-    </Container>
+      </Carousel>
+      <Title>{t("rooms")}</Title>
+      <Carousel dynamicHeight infiniteLoop>
+      {roomImages.map((el) => (
+            <Image width={1000} height={1000} alt="house" src={el.original} />
+        ))}
+      </Carousel>
+    </StContainer>
   );
 };
 

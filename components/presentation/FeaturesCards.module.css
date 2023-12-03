@@ -7,8 +7,17 @@
 .description {
   max-width: 37.5rem;
   margin: auto;
+}
 
+.root {
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+}
 
+.grid {
+  width: 1000px;
+  max-width: calc(100vw - 3rem);
 }
 
 .card {

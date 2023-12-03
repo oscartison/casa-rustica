@@ -1,0 +1,38 @@
+.root {
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.mantine-Paper-root {
+  background-color: white;
+}
+
+
+.grid {
+  width: 1000px;
+  max-width: calc(100vw - 3rem);
+}
+
+.paper { 
+  background-color: white;
+  
+}
+
+.value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.diff {
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-weight: 700;
+  text-transform: uppercase;
+}
