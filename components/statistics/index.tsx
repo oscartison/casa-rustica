@@ -21,7 +21,7 @@ const data = [
   { description: 'Up to 10 people', icon: 'room', value: '4 rooms' },
   { description: '1 bath and 2 showers', icon: 'bathroom', value: '2 bathrooms', diff: -13 },
   { description: 'Animals are allowed', icon: 'animal', value: 'Animal friendly', diff: 18 },
-  { description: '+ TV and 24\' monitor ', icon: 'wifi', value: 'Wifi available', diff: -30 },
+  { description: 'TV and 24 monitor', icon: 'wifi', value: 'Wifi available', diff: -30 },
 ] as const;
 
 function StatsGrid() {
