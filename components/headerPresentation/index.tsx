@@ -21,7 +21,7 @@ const HeaderPresentation = () => {
 
   const scrollOutside = () => {
     window.scrollTo({
-      top: ref.current?.offsetHeight,
+      top: (ref.current as any).offsetHeight,
       behavior: "smooth"
     })
   }

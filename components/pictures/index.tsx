@@ -117,7 +117,7 @@ const Pictures = () => {
   const myRef = React.useRef(null)
   const executeScroll = () => {
     if (myRef && myRef.current) {
-      window.scrollTo({top: myRef.current.offsetTop - 800,
+      window.scrollTo({top: (myRef.current as any).offsetTop - 800,
         behavior: "smooth"})
     }
   }
