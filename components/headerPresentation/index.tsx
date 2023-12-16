@@ -12,6 +12,10 @@ const ButtonContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1rem;
+
+  @media (max-width: 56.25em) {
+  flex-direction:column ;
+  }
 `
 
 
