@@ -1,4 +1,5 @@
 import { useTranslation } from "next-i18next";
+import * as React from 'react';
 import styled from "styled-components";
 import Image1 from "../../app/images/house/1.jpeg";
 import Image2 from "../../app/images/house/2.jpeg";
@@ -110,24 +111,38 @@ const roomImages = [
   }
 ];
 
+
 const Pictures = () => {
   const { t } = useTranslation("home");
+  const myRef = React.useRef(null)
+  const executeScroll = () => {
+    if (myRef && myRef.current) {
+      window.scrollTo({top: myRef.current.offsetTop - 800,
+        behavior: "smooth"})
+    }
+  }
 
+  const change = (index:number) => {
+    if(index === 0) {
+      executeScroll();
+    }
+  }
 
   return (
     <StContainer >
       <Title>{t("house")}</Title>
-      <Carousel dynamicHeight infiniteLoop autoFocus>
+      <Carousel infiniteLoop showThumbs={false} onChange={change}>
        {images.map((el) => (
           <Image width={1000} height={1000} alt="house" src={el.original} />
         ))}
       </Carousel>
-      <Title>{t("rooms")}</Title>
-      <Carousel dynamicHeight infiniteLoop>
+      <Title >{t("rooms")}</Title>
+      <Carousel infiniteLoop showThumbs={false} >
       {roomImages.map((el) => (
             <Image width={1000} height={1000} alt="house" src={el.original} />
         ))}
       </Carousel>
+      <div  ref={myRef}/>
     </StContainer>
   );
 };

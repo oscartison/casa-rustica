@@ -19,8 +19,3 @@
   width: 1000px;
   max-width: calc(100vw - 3rem);
 }
-
-.card {
-  border: 0.5rem solid light-dark(var(--mantine-color-gray-1), var(--mantine-color-dark-5));
-}
-

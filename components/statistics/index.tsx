@@ -3,7 +3,6 @@ import { useMediaQuery } from '@mantine/hooks';
 import {
   IconBed,
   IconBath,
-  IconBeach,
   IconPaw,
   IconWifi,
 } from '@tabler/icons-react';
