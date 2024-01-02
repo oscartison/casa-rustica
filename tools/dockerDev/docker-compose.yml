@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  # Next.js app service
+  nextjs-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+      - "5555:5555"
+
+    volumes:
+      - ../../:/app
+    depends_on:
+      - postgres
+
+  # PostgreSQL service
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: dev_user
+      POSTGRES_PASSWORD: dev_pwd
+      POSTGRES_DB: dev_db
+    expose: 
+      - "5432"
+    ports:
+      - "9299:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
