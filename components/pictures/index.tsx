@@ -24,7 +24,6 @@ import Image18a from "../../app/images/house/18a.jpeg";
 import Image18 from "../../app/images/house/18.jpeg";
 import Image19 from "../../app/images/house/19.jpeg";
 import { Container, Title } from "@mantine/core";
-import Image from "next/image";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 

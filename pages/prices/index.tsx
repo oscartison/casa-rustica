@@ -4,10 +4,7 @@ import styled from 'styled-components';
 import Seo from '../../components/_common/seo';
 import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'react-i18next';
-import prisma from '../../lib/prisma';
-import { Period } from '@prisma/client';
 import * as React from 'react';
-import { DatePicker } from '@mantine/dates';
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
   margin-top: ${props => props.$isMobile ? '2rem' : "4rem"};

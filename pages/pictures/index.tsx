@@ -1,4 +1,3 @@
-import { BackgroundImage, BackgroundImageProps } from '@mantine/core';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import styled from 'styled-components';
 import Pictures from '../../components/pictures';
