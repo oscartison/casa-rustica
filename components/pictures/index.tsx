@@ -26,6 +26,7 @@ import Image19 from "../../app/images/house/19.jpeg";
 import { Container, Title } from "@mantine/core";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
+import Image from "next/image";
 
 
 
@@ -37,14 +38,27 @@ const StContainer = styled(Container)`
   align-items: center;
 
   .slider {
-   max-width: 1000px;
+   width: 1000px;
+   max-width: calc(100vw - 32px);
   }
 `;
+
+
+const Pictures = () => {
+  const { t } = useTranslation("home");
+  const myRef = React.useRef(null)
+  const executeScroll = () => {
+    if (myRef && myRef.current) {
+      window.scrollTo({top: (myRef.current as any).offsetTop - 800,
+        behavior: "smooth"})
+    }
+  }
+
 
 const images = [
   {
     original: Image1.src,
-    thumbnail: Image1.src
+    thumbnail: Image1.src,
   },
   {
     original: Image2.src,
@@ -86,10 +100,6 @@ const images = [
     original: Image9.src,
     thumbnail: Image9.src
   }
-  // {
-  //   original: Image18.src,
-  //   thumbnail: Image18.src
-  // }
 ];
 
 const roomImages = [
@@ -117,10 +127,6 @@ const roomImages = [
     original: Image15.src,
     thumbnail: Image15.src
   },
-  // {
-  //   original: Image16.src,
-  //   thumbnail: Image16.src
-  // },
   {
     original: Image17.src,
     thumbnail: Image17.src
@@ -143,16 +149,6 @@ const roomImages = [
   }
 ];
 
-
-const Pictures = () => {
-  const { t } = useTranslation("home");
-  const myRef = React.useRef(null)
-  const executeScroll = () => {
-    if (myRef && myRef.current) {
-      window.scrollTo({top: (myRef.current as any).offsetTop - 800,
-        behavior: "smooth"})
-    }
-  }
 
   const change = (index:number) => {
     if(index === 0) {
