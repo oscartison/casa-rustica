@@ -5,6 +5,7 @@ import Seo from '../../components/_common/seo';
 import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'react-i18next';
 import * as React from 'react';
+import PricesComponent from '../../components/prices';
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
   margin-top: ${props => props.$isMobile ? '2rem' : "4rem"};
@@ -20,9 +21,9 @@ const Prices = ( ) => {
 
   return (
     <>
-    <Seo title={`${t('pictures')} - Casa Rustica`} />
+    <Seo title={`${t('prices')} - Casa Rustica`} />
       <TextContainer $isMobile={isMobile}>
-     
+        <PricesComponent />
       </TextContainer>
   </>
   );

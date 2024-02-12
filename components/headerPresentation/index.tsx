@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Title, Text, Container, Button, Overlay, BackgroundImage } from '@mantine/core';
 import classes from './HeroImageBackground.module.css';
 import { useTranslation } from 'react-i18next';
-import Home from '../../app/images/house/casa-drawing.jpeg'
+import Home from '../../app/images/house/casa-drawing.webp'
 import Link from 'next/link';
 import { IconArrowDown } from '@tabler/icons-react';
 import styled from 'styled-components';

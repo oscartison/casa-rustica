@@ -29,6 +29,15 @@ export default async function sitemap() {
         {
             url:`${baseUrl}/fr/contact`, lastModified: new Date()
         },
+        {
+            url:`${baseUrl}/prices`, lastModified: new Date()
+        },
+        {
+            url:`${baseUrl}/nl/prices`, lastModified: new Date()
+        },
+        {
+            url:`${baseUrl}/fr/prices`, lastModified: new Date()
+        },
     ]
     
 }

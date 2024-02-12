@@ -1,6 +1,6 @@
 import { BackgroundImage, BackgroundImageProps, Container } from '@mantine/core';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Home from '../../app/images/house/house.jpeg'
+import Home from '../../app/images/house/house.webp'
 import styled from 'styled-components';
 
 import Seo from '../../components/_common/seo';
