@@ -10,6 +10,7 @@ import { images, roomImages } from "../../app/data/images";
 
 const StContainer = styled(Container)`
   padding: 3rem;
+  max-width: 100dvw;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
