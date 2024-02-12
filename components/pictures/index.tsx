@@ -16,8 +16,9 @@ const StContainer = styled(Container)`
   align-items: center;
 
   .slider {
-   width: 1000px;
-   max-width: 100lvw;
+    max-width: 100dvw;
+    width: 1000px;
+    margin: 0;
   }
 `;
 
