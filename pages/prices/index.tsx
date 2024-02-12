@@ -8,7 +8,7 @@ import * as React from 'react';
 import PricesComponent from '../../components/prices';
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
-  margin-top: ${props => props.$isMobile ? '2rem' : "4rem"};
+  margin-top: ${props => props.$isMobile ? '3rem' : "4rem"};
   height: fit-content;
   background: rgba(255,255,255,0.8);
   display:flex;
@@ -36,7 +36,7 @@ export async function getStaticProps({ locale }) {
     return {
     props: {
       ...(await serverSideTranslations(locale, [
-        'home','common'
+        'home','prices'
       ])),
     },
   }

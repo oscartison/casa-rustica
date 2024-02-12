@@ -7,7 +7,6 @@ import {
   Paper,
   Transition,
   rem,
-  NavLink,
   PaperProps,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
