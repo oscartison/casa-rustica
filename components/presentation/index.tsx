@@ -3,7 +3,6 @@ import {
     Card,
     SimpleGrid,
     Container,
-    rem,
     useMantineTheme,
   } from '@mantine/core';
   import {  IconBeach, IconHome2, IconSun } from '@tabler/icons-react';

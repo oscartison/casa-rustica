@@ -22,101 +22,149 @@ import Image17a from "../../app/images/house/17a.webp";
 import Image18a from "../../app/images/house/18a.webp";
 import Image18 from "../../app/images/house/18.webp";
 import Image19 from "../../app/images/house/19.webp";
+import { NextImage } from "../../components/_common/image";
+import { ThumbImage } from "../../components/_common/thumbImage";
 
 export const images = [
-    {
-      original: Image1.src,
-      thumbnail: Image1.src,
-    },
-    {
-      original: Image2.src,
-      thumbnail: Image2.src
-    },
-    {
-      original: Image3.src,
-      thumbnail: Image3.src
-    },
-    {
-      original: Image4.src,
-      thumbnail: Image4.src
-    },
-    {
-      original: Image5.src,
-      thumbnail: Image5.src
-    },
-    {
-      original: Image6.src,
-      thumbnail: Image6.src
-    },
-    {
-      original: Image7.src,
-      thumbnail: Image7.src
-    },
-    {
-      original: Image8.src,
-      thumbnail: Image8.src
-    },
-    {
-      original: Image8a.src,
-      thumbnail: Image8a.src
-    },
-    {
-      original: Image8b.src,
-      thumbnail: Image8b.src
-    },
-    {
-      original: Image9.src,
-      thumbnail: Image9.src
-    },
-    {
-        original: Image9a.src,
-        thumbnail: Image9a.src
-      }
-  ];
-  
+  {
+    original: Image1.src,
+    thumbnail: Image1.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image2.src,
+    thumbnail: Image2.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image3.src,
+    thumbnail: Image3.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image4.src,
+    thumbnail: Image4.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image5.src,
+    thumbnail: Image5.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image6.src,
+    thumbnail: Image6.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image7.src,
+    thumbnail: Image7.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image8.src,
+    thumbnail: Image8.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image8a.src,
+    thumbnail: Image8a.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image8b.src,
+    thumbnail: Image8b.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image9.src,
+    thumbnail: Image9.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image9a.src,
+    thumbnail: Image9a.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  }
+];
+
 export const roomImages = [
-    {
-      original: Image10.src,
-      thumbnail: Image10.src
-    },
-    {
-      original: Image11.src,
-      thumbnail: Image11.src
-    },
-    {
-      original: Image12.src,
-      thumbnail: Image12.src
-    },
-    {
-      original: Image13.src,
-      thumbnail: Image13.src
-    },
-    {
-      original: Image14.src,
-      thumbnail: Image14.src
-    },
-    {
-      original: Image15.src,
-      thumbnail: Image15.src
-    },
-    {
-      original: Image17.src,
-      thumbnail: Image17.src
-    },
-    {
-      original: Image17a.src,
-      thumbnail: Image17a.src
-    },
-    {
-      original: Image18.src,
-      thumbnail: Image18.src
-    },
-    {
-      original: Image18a.src,
-      thumbnail: Image18a.src
-    },
-    {
-      original: Image19.src,
-      thumbnail: Image19.src
-    }
-  ];
+  {
+    original: Image10.src,
+    thumbnail: Image10.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image11.src,
+    thumbnail: Image11.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image12.src,
+    thumbnail: Image12.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image13.src,
+    thumbnail: Image13.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image14.src,
+    thumbnail: Image14.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image15.src,
+    thumbnail: Image15.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image17.src,
+    thumbnail: Image17.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image17a.src,
+    thumbnail: Image17a.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image18.src,
+    thumbnail: Image18.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image18a.src,
+    thumbnail: Image18a.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  },
+  {
+    original: Image19.src,
+    thumbnail: Image19.src,
+    renderItem: NextImage,
+    renderThumbInner: ThumbImage
+  }
+];
