@@ -23,7 +23,7 @@ const HEADER_HEIGHT = rem(60);
 const useStyles = createStyles((theme) => ({
   root: {
     position: 'fixed',
-    zIndex: 999,
+    zIndex: 30,
   },
 
   dropdown: {

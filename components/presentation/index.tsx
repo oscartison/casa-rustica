@@ -8,8 +8,8 @@ import {
   } from '@mantine/core';
   import {  IconBeach, IconHome2, IconSun } from '@tabler/icons-react';
   import classes from './FeaturesCards.module.css';
-import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from '@mantine/hooks';
+  import { useTranslation } from 'next-i18next';
+  import { useMediaQuery } from '@mantine/hooks';
 
 
   
@@ -41,7 +41,6 @@ const FeaturesCards= () =>  {
     const features = mockdata.map((feature) => (
       <Card key={feature.title} shadow="md" withBorder radius="md" className={classes.card} padding="xl">
         <feature.icon
-          style={{ width: rem(50), height: rem(50) }}
           stroke={2}
           color={theme.colors.dark[3]}
         />

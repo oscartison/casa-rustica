@@ -6,7 +6,7 @@ import {
   IconPaw,
   IconWifi,
 } from '@tabler/icons-react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import classes from './StatsGrid.module.css';
 
 const icons = {
@@ -34,8 +34,7 @@ function StatsGrid() {
     return (
       <Paper className={classes.card} withBorder p="md" radius="md" shadow='md' key={stat.icon}>
         <Group >
-    
-          <Icon className={classes.icon} size="1.4rem" stroke={1.5} />
+          <Icon className={classes.icon} stroke={1.5} />
         </Group>
 
         <Group align="flex-end"  mt={25}>

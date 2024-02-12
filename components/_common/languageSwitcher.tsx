@@ -12,6 +12,7 @@ const data = [
 
 const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
   control: {
+    zIndex: 100,
     width: rem(120),
     display: 'flex',
     justifyContent: 'space-between',
@@ -83,7 +84,7 @@ export function LanguagePicker() {
           <Group spacing="xs">
             <span className={classes.label}>{selected.label}</span>
           </Group>
-          <IconChevronDown size="1rem" className={classes.icon} stroke={1.5} />
+          <IconChevronDown  className={classes.icon} stroke={1.5} />
         </UnstyledButton>
       </Menu.Target>
       <Menu.Dropdown>{items}</Menu.Dropdown>

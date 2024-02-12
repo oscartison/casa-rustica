@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Seo from '../../components/_common/seo';
 import { useMediaQuery } from '@mantine/hooks';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 import * as React from 'react';
 import PricesComponent from '../../components/prices';
 
@@ -36,7 +36,7 @@ export async function getStaticProps({ locale }) {
     return {
     props: {
       ...(await serverSideTranslations(locale, [
-        'home','prices'
+        'home','prices', 'common'
       ])),
     },
   }

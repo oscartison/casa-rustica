@@ -8,7 +8,6 @@ import {
     Group,
     ActionIcon,
 } from '@mantine/core';
-import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram } from '@tabler/icons-react';
 import { ContactIconsList } from './contactIcons';
 import classes from './ContactUs.module.css';
 import { useForm } from '@mantine/form';

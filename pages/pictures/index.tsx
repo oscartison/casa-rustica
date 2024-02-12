@@ -4,7 +4,7 @@ import Pictures from '../../components/pictures';
 
 import Seo from '../../components/_common/seo';
 import { useMediaQuery } from '@mantine/hooks';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'next-i18next';
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
   margin-top: ${props => props.$isMobile ? '2rem' : "4rem"};
