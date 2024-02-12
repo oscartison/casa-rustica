@@ -3,8 +3,8 @@ import { styled } from 'styled-components';
 import { HeaderResponsive } from './header';
 
 const Main = styled.main`
-  min-height: 100vh;
-  max-width: 100vw;
+  min-height: 100lvh;
+  max-width: 100lvw;
   display: flex;
   flex-direction: column;
   font-family: 'Metropolis';

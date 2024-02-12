@@ -17,7 +17,7 @@ const StContainer = styled(Container)`
 
   .slider {
    width: 1000px;
-   max-width: 100vw;
+   max-width: 100lvw;
   }
 `;
 

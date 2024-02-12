@@ -147,9 +147,7 @@ export function HeaderResponsive({ links }: HeaderResponsiveProps) {
           {(styles) => (
             <StyledPaper className={classes.dropdown} withBorder style={styles}>
               {items}
-              <Space>
               <LanguagePicker />
-              </Space>
             </StyledPaper>
           )}
         </Transition>
