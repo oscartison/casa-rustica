@@ -1,9 +1,6 @@
 import {
     Text,
-    Card,
-    SimpleGrid,
     Container,
-    rem,
     useMantineTheme,
     Title,
     Group,
@@ -12,10 +9,8 @@ import {
     Button,
     Divider,
     Flex,
-    Switch,
   } from '@mantine/core';
 import { useTranslation } from 'react-i18next';
-import { useMediaQuery } from '@mantine/hooks';
 import React from 'react';
 
 
@@ -81,14 +76,14 @@ const PricesComponent= () =>  {
                               225 
                            </Title>
                            <Text fz={'1rem'}>/{t('night')}</Text>
-                           <Stack w={'100%'} align='center' spacing={10} sx={{color: theme.colorScheme === 'light' && 'hsl(233, 13%, 49%)'}}>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' &&'gray', opacity: theme.colorScheme === 'dark' && 0.7 }} />
+                           <Stack w={'100%'} align='center' spacing={10}>
+                              <Divider  />
                               <Text fz={'sm'} fw={600} >500 GB Storage</Text>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' &&'gray', opacity: theme.colorScheme === 'dark' && 0.7 }} />
+                              <Divider  />
                               <Text fz={'sm'} fw={600} >2 Users Allowed</Text>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' &&'gray', opacity: theme.colorScheme === 'dark' && 0.7 }} />
+                              <Divider />
                               <Text fz={'sm'} fw={600} >Send up to 3 GB</Text>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' &&'gray', opacity: theme.colorScheme === 'dark' && 0.7 }} />
+                              <Divider  />
                            </Stack>
                            <Button
                               variant='gradient'
@@ -136,13 +131,13 @@ const PricesComponent= () =>  {
                            </Title>
                            <Text fz={'1rem'}>/{t('night')}</Text>
                            <Stack w={'100%'} align='center' spacing={10}>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' && 'white', opacity: theme.colorScheme === 'dark' && 0.6 }} />
+                              <Divider />
                               <Text fz={'sm'} fw={600}>1 TB Storage</Text>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' && 'white', opacity: theme.colorScheme === 'dark' && 0.6 }} />
+                              <Divider  />
                               <Text fz={'sm'} fw={600}>5 Users Allowed</Text>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' && 'white', opacity: theme.colorScheme === 'dark' && 0.6 }} />
+                              <Divider  />
                               <Text fz={'sm'} fw={600}>Send up to 10 GB</Text>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' && 'white', opacity: theme.colorScheme === 'dark' && 0.6 }} />
+                              <Divider />
                            </Stack>
                            <Button
                               sx={{
@@ -200,14 +195,14 @@ const PricesComponent= () =>  {
                               250
                            </Title>
                            <Text fz={'1rem'}>/{t('night')}</Text>
-                           <Stack w={'100%'} align='center' spacing={10} sx={{color: theme.colorScheme === 'light' && 'hsl(233, 13%, 49%)'}}>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' &&'gray', opacity: theme.colorScheme === 'dark' && 0.7 }} />
+                           <Stack w={'100%'} align='center' spacing={10} >
+                              <Divider />
                               <Text fz={'sm'} fw={600} >2 TB Storage</Text>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' &&'gray', opacity: theme.colorScheme === 'dark' && 0.7 }} />
+                              <Divider />
                               <Text fz={'sm'} fw={600} >10 Users Allowed</Text>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' &&'gray', opacity: theme.colorScheme === 'dark' && 0.7 }} />
+                              <Divider  />
                               <Text fz={'sm'} fw={600} >Send up to 20 GB</Text>
-                              <Divider sx={{ width: '100%', borderColor: theme.colorScheme === 'dark' &&'gray', opacity: theme.colorScheme === 'dark' && 0.7 }} />
+                              <Divider />
                            </Stack>
                            <Button
                               variant='gradient'
