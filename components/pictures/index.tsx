@@ -17,7 +17,7 @@ const StContainer = styled(Container)`
 
   .slider {
    width: 1000px;
-   max-width: calc(100vw - 32px);
+   max-width: 100vw;
   }
 `;
 
@@ -31,9 +31,6 @@ const Pictures = () => {
         behavior: "smooth"})
     }
   }
-
-
-
 
 
   const change = (index:number) => {
