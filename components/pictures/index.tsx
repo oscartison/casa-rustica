@@ -1,12 +1,10 @@
 import { useTranslation } from "next-i18next";
-import * as React from 'react';
+import * as React from "react";
 import styled from "styled-components";
 import { Container, Title } from "@mantine/core";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import { images, roomImages } from "../../app/data/images";
-
-
 
 const StContainer = styled(Container)`
   padding: 3rem;
@@ -23,31 +21,40 @@ const StContainer = styled(Container)`
   }
 `;
 
-
 const Pictures = () => {
   const { t } = useTranslation("home");
-  const myRef = React.useRef(null)
+  const myRef = React.useRef(null);
   const executeScroll = () => {
     if (myRef && myRef.current) {
-      window.scrollTo({top: (myRef.current as any).offsetTop - 800,
-        behavior: "smooth"})
+      window.scrollTo({
+        top: (myRef.current as any).offsetTop - 800,
+        behavior: "smooth"
+      });
     }
-  }
+  };
 
-
-  const change = (index:number) => {
-    if(index === 0) {
+  const change = (index: number) => {
+    if (index === 0) {
       executeScroll();
     }
-  }
+  };
 
   return (
-    <StContainer >
+    <StContainer>
       <Title>{t("house")}</Title>
-      <ImageGallery additionalClass="slider" onSlide={change} items={images} />
-      <Title >{t("rooms")}</Title>
-      <ImageGallery additionalClass="slider" items={roomImages} />
-      <div  ref={myRef}/>
+      <ImageGallery
+        additionalClass="slider"
+        lazyload={true}
+        onSlide={change}
+        items={images}
+      />
+      <Title>{t("rooms")}</Title>
+      <ImageGallery
+        additionalClass="slider"
+        lazyload={true}
+        items={roomImages}
+      />
+      <div ref={myRef} />
     </StContainer>
   );
 };
