@@ -5,7 +5,9 @@ import Presentation from '../components/presentation';
 import { useMediaQuery } from '@mantine/hooks';
 import HeaderPresentation from '../components/headerPresentation';
 import StatsGrid from '../components/statistics';
-
+import * as React from 'react'
+import prisma from '../lib/prisma';
+import { Visitor} from '@prisma/client';
 
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
@@ -18,7 +20,7 @@ margin-top: 4rem;
   
 `
 
-export default function LandingPage() {
+export default function LandingPage({ip}: {ip:string}) {
   const isMobile = useMediaQuery('(max-width: 56.25em)');
 
   return (
@@ -34,7 +36,18 @@ export default function LandingPage() {
 }
 
 
-export async function getStaticProps({ locale }) {
+export async function getServerSideProps({req, locale }) {
+  const forwarded = req.headers["x-forwarded-for"]
+  const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress
+
+  const visitor: Visitor | null = await prisma.visitor.findFirst({where: {ipAddress: ip}})
+
+  if(visitor) {
+    await prisma.visitor.update({data: {views:visitor.views +1 },where: {id: visitor.id}})
+  } else {
+    await prisma.visitor.create({data: {ipAddress:ip,views:1}})
+
+  }
   return {
     props: {
       ...(await serverSideTranslations(locale, [

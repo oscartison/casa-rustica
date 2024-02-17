@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider      = "prisma-client-js"
   binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
@@ -12,37 +9,31 @@ datasource db {
 }
 
 model Period {
-  id Int @id @default(autoincrement())
-
-  title String @unique
-
-  price Int
-
+  id          Int      @id @default(autoincrement())
+  title       String   @unique
+  price       Int
+  fromDate    DateTime
+  toDate      DateTime
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
   minimumDays Int
-
-  fromDate DateTime
-
-  toDate DateTime
-
-  published Boolean @default(false)
-
-  createdAt DateTime @default(now())
-
-  updatedAt DateTime @updatedAt
 }
 
 model Reservation {
-  id Int @id @default(autoincrement())
-
-  fromDate DateTime
-
-  toDate DateTime
-
-  confirmed Boolean @default(false)
-
-  published Boolean @default(false)
-
+  id        Int      @id @default(autoincrement())
+  fromDate  DateTime
+  toDate    DateTime
+  confirmed Boolean  @default(false)
+  published Boolean  @default(false)
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
+model Visitor {
+  id        Int      @id @default(autoincrement())
+  ipAddress String
+  views     Int
+  createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
