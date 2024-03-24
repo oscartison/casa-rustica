@@ -44,6 +44,7 @@ export async function getStaticProps({ locale }) {
     );
     const r = await a.json();
     items = r.items;
+    console.log({items});
   } catch (e) {
     items = [];
   }
