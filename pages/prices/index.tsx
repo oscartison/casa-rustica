@@ -40,7 +40,7 @@ export async function getStaticProps({ locale }) {
   let items;
   try {
     const a = await fetch(
-      `https://www.googleapis.com/calendar/v3/calendars/1d437be726f23042b2ba8c2e886cf7cecab8530496a0e9bed974b8a40833b758@group.calendar.google.com/events?key=${process.env.GOOGLE_API_KEY}`
+      `https://www.googleapis.com/calendar/v3/calendars/1d437be726f23042b2ba8c2e886cf7cecab8530496a0e9bed974b8a40833b758@group.calendar.google.com/events?key=${process.env.GOOGLE_API_KEY}`,{ next: { revalidate: 3600 } }
     );
     const r = await a.json();
     items = r.items;
