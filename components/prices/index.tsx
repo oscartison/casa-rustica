@@ -16,14 +16,18 @@ import {
 } from "@mantine/core";
 import { useTranslation } from 'next-i18next';
 import React from "react";
+import {  CalendarComponent } from './calendar';
+import { useDisclosure, useCounter } from '@mantine/hooks';
 
-const PricesComponent = () => {
+const PricesComponent = ({bookings}) => {
   const theme = useMantineTheme();
   const { t } = useTranslation("prices");
 
+  const [opened, { close, open }] = useDisclosure(false);
 
   return (
     <Container size="lg" py="xl" >
+      <CalendarComponent open={opened} close={close} bookings={bookings}/>
       <Title>{t("prices")}</Title>
       <Flex sx={{ zIndex: 50 }} pt="10%">
         <Stack spacing={40}>
@@ -139,7 +143,7 @@ const PricesComponent = () => {
                       }}
                     />
                   </Stack>
-                  <Link href='/contact' >
+                 
 
                   <Button
                     variant="gradient"
@@ -147,11 +151,11 @@ const PricesComponent = () => {
                       from: "hsl(240, 3.9106145251396653%, 64.90196078431372%)",
                       to: "hsl(240, 10.344827586206897%, 22.745098039215687%)"
                     }}
+                    onClick={open}
                     w="100%"
                   >
-                    {t("Contact us")}
+                    {t("Check availabilities")}
                   </Button>
-                  </Link>
                 </Stack>
               </Box>
               <Box
@@ -235,7 +239,6 @@ const PricesComponent = () => {
                       }}
                     />
                   </Stack>
-                  <Link href='/contact' >
 
                   <Button
                     sx={{
@@ -249,10 +252,10 @@ const PricesComponent = () => {
                       }
                     }}
                     w="100%"
+                    onClick={open}
                   >
-                    {t("Contact us")}
+                    {t("Check availabilities")}
                   </Button>
-                  </Link>
                 </Stack>
               </Box>
               <Box
@@ -357,9 +360,9 @@ const PricesComponent = () => {
                       }}
                     />
                   </Stack>
-                  <Link href='/contact' >
 
                   <Button
+                  onClick={open}
                     variant="gradient"
                     gradient={{
                       from: "hsl(240, 3.9106145251396653%, 64.90196078431372%)",
@@ -367,9 +370,8 @@ const PricesComponent = () => {
                     }}
                     w="100%"
                   >
-                    {t("Contact us")}
+                    {t("Check availabilities")}
                   </Button>
-                  </Link>
                 </Stack>
               </Box>
             </Flex>

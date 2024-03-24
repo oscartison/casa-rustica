@@ -1,4 +1,4 @@
-import { BackgroundImage, BackgroundImageProps, Container } from '@mantine/core';
+import {  BackgroundImageProps, Container } from '@mantine/core';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Home from '../../app/images/house/house.webp'
 import styled from 'styled-components';
@@ -39,7 +39,7 @@ const Contact = () => {
       <Seo title={`${t('contact')} - Casa Rustica`} />
       <StyledBackImage src={Home.src}>
       <TextContainer $isMobile={isMobile}>
-        <ContactUs />
+        <ContactUs/>
       </TextContainer>
       </StyledBackImage>
   </>
@@ -49,11 +49,10 @@ const Contact = () => {
 export default Contact;
 
 export async function getStaticProps({ locale }) {
+  
   return {
     props: {
-      ...(await serverSideTranslations(locale, [
-        'home','common'
-      ])),
-    },
-  }
+      ...(await serverSideTranslations(locale, ["home", "common", "prices"])),
+    }
+  };
 }
