@@ -11,7 +11,7 @@ import { useTranslation } from 'next-i18next';
 const StyledBackImage = styled(Container)<BackgroundImageProps>`
   height: calc(100vh - 3rem);
   max-height: calc(100vh - 3rem);
-  width: 100vw;
+  min-width: 100vw;
   margin-top: 3rem;
   overflow-y: scroll;
   backdrop-filter: blur(5px);

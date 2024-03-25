@@ -17,6 +17,7 @@ import { useSearchParams } from "next/navigation";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
 export function ContactUs() {
   const { t } = useTranslation("home");
   const searchParams = useSearchParams();
