@@ -9,6 +9,7 @@ import {
   import classes from './FeaturesCards.module.css';
   import { useTranslation } from 'next-i18next';
   import { useMediaQuery } from '@mantine/hooks';
+import { title } from 'process';
 
 
   
@@ -26,10 +27,12 @@ import {
       icon: IconHome2,
     },
     {
-      title: 'garden',
+      title: 'tourism',
       description:
-'gardenDescription',      icon: IconSun,
+'tourismDescription',      
+icon: IconSun,
     },
+
   ];
   
 const FeaturesCards= () =>  {
@@ -43,7 +46,7 @@ const FeaturesCards= () =>  {
           stroke={2}
           color={theme.colors.dark[3]}
         />
-        <Text fz="lg" fw={500} className={classes.cardTitle} mt="md">
+        <Text fz="lg" fw={500} className={classes.cardTitle} mt="md" ta="center">
           {t(feature.title)}
         </Text>
         <Text fz="sm" c="dimmed" mt="sm">

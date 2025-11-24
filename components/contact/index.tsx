@@ -123,11 +123,17 @@ export function ContactUs() {
             />
 
             <Group mt="md">
-              <Button
-                loading={loading}
+               <Button  size="md" radius="md" styles={{
+                          root: {
+                            backgroundColor: "#b47b56",
+                            ":hover": {
+                              backgroundColor: "#a66d4e",
+                            },
+                          }}}
+                            loading={loading}
                 className={classes.control}
-                type="submit"
-              >
+                type="submit">
+            
                 {t("send")}
               </Button>
             </Group>

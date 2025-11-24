@@ -1,62 +1,59 @@
-import { useTranslation } from "next-i18next";
-import * as React from "react";
-import styled from "styled-components";
-import { Container, Title } from "@mantine/core";
-import "react-image-gallery/styles/css/image-gallery.css";
-import ImageGallery from "react-image-gallery";
-import { images, roomImages } from "../../app/data/images";
+import dynamic from "next/dynamic";
+import { Container, Text } from '@mantine/core';
 
-const StContainer = styled(Container)`
-  padding: 3rem;
-  max-width: 100dvw;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  align-items: center;
+const GalleryClient = dynamic(() => import("./gallery"), {
+  ssr: false,
+});
+import {images, roomImages} from "../../app/data/images";
+import { useTranslation } from 'next-i18next';
 
-  .slider {
-    max-width: 100dvw;
-    width: 1000px;
-    margin: 0;
-  }
-`;
-
-const Pictures = () => {
-  const { t } = useTranslation("home");
-  const myRef = React.useRef(null);
-  const executeScroll = () => {
-    if (myRef && myRef.current) {
-      window.scrollTo({
-        top: (myRef.current as any).offsetTop - 800,
-        behavior: "smooth"
-      });
-    }
-  };
-
-  const change = (index: number) => {
-    if (index === 0) {
-      executeScroll();
-    }
-  };
+export default function Page() {
+    const { t } = useTranslation("common");
 
   return (
-    <StContainer>
-      <Title>{t("house")}</Title>
-      <ImageGallery
-        additionalClass="slider"
-        lazyload={true}
-        onSlide={change}
-        items={images}
-      />
-      <Title>{t("rooms")}</Title>
-      <ImageGallery
-        additionalClass="slider"
-        lazyload={true}
-        items={roomImages}
-      />
-      <div ref={myRef} />
-    </StContainer>
-  );
-};
+    <Container>
+      <Text size="xl" weight={500} align="center" mt="md" mb="md">
+        {t('pictures')}
+      </Text>
+          <GalleryClient>
 
-export default Pictures;
+        {
+          images.map((image)=> 
+          (    
+              <a
+          data-lg-size="1600-1067"
+          className="gallery-item"
+          data-src={image.original}
+        >
+          <img
+          width="100%"
+            alt="Pics Casa Rustica."
+            className="img-responsive"
+            src={image.original}
+          />
+        </a>
+          ))
+        }
+          {
+          roomImages.map((image)=> 
+                    (    
+
+              <a
+          data-lg-size="1600-1067"
+          className="gallery-item"
+          data-src={image.original}
+        >
+          <img
+          width="100%"
+            alt="Pics Rooms Casa Rustica."
+            className="img-responsive"
+            src={image.original}
+          />
+        </a>
+
+          ))
+        }
+      </GalleryClient>    </Container>
+
+  );
+}

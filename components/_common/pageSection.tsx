@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { mediaQueries } from '../../styles/theme';
 
 const Section = styled.div<{ $backgroundColor: string }>`
-  background-color: ${({ $backgroundColor }) => $backgroundColor};
   padding: 0 1rem;
   width: 100%;
   overflow: hidden;

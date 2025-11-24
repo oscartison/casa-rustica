@@ -1,4 +1,4 @@
-import {  BackgroundImageProps, Container } from '@mantine/core';
+import {  BackgroundImageProps, Container, Divider } from '@mantine/core';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import Home from '../../app/images/house/house.webp'
 import styled from 'styled-components';
@@ -7,11 +7,13 @@ import Seo from '../../components/_common/seo';
 import { ContactUs } from '../../components/contact';
 import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'next-i18next';
+import MapComponent from '../../components/map/map';
+
 
 const StyledBackImage = styled(Container)<BackgroundImageProps>`
   height: calc(100vh - 3rem);
   max-height: calc(100vh - 3rem);
-  min-width: 100vw;
+  min-width: 80vw;
   margin-top: 3rem;
   overflow-y: scroll;
   backdrop-filter: blur(5px);
@@ -24,9 +26,10 @@ const TextContainer = styled.div<{$isMobile: boolean}>`
   width: 1000px;
   margin-top: ${props => props.$isMobile ? '0' : "8rem"};
   height: fit-content;
-  background-color: #fafcff;
+  background-color: #f2e9dd;
   border-radius: 1rem;
   display:flex;
+  flex-direction: column;
   justify-content:center;
 `
 
@@ -40,6 +43,8 @@ const Contact = () => {
       <StyledBackImage src={Home.src}>
       <TextContainer $isMobile={isMobile}>
         <ContactUs/>
+        <Divider my="md" />
+        <MapComponent />
       </TextContainer>
       </StyledBackImage>
   </>

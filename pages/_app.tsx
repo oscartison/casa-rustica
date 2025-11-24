@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+// import "../styles/globals.css";
 
 import Layout from "../components/_common/layout";
 import { MantineProvider } from "@mantine/core";
@@ -10,10 +10,7 @@ const MyApp = ({ Component, pageProps }) => (
   <MantineProvider
     withGlobalStyles
     withNormalizeCSS
-    theme={{
-      /** Put your mantine theme override here */
-      colorScheme: "light"
-    }}
+  
   >
 
     <Layout>

@@ -8,13 +8,15 @@ import StatsGrid from '../components/statistics';
 import * as React from 'react'
 import prisma from '../lib/prisma';
 import { Visitor} from '@prisma/client';
+import About from '../components/about';
 
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
-margin-top: 4rem;
   background: rgba(255,255,255,0.8);
   display:flex;
   flex-direction: column;
+  gap: 4rem;
+  
   justify-content:center;
   padding-bottom: 6rem;
   
@@ -28,6 +30,7 @@ export default function LandingPage({ip}: {ip:string}) {
       <Seo title="Home - Casa Rustica" />
         <TextContainer $isMobile={isMobile}>
           <HeaderPresentation />
+          <About />
           <Presentation />
           <StatsGrid />
         </TextContainer>

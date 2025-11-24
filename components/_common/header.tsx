@@ -21,11 +21,10 @@ import Link from 'next/link';
 const HEADER_HEIGHT = rem(60);
 
 const useStyles = createStyles((theme) => ({
-  root: {
-    position: 'fixed',
-    zIndex: 30,
-  },
 
+  root: {
+   marginTop: '1rem',
+  },
   dropdown: {
     position: 'absolute',
     top: HEADER_HEIGHT,
@@ -74,7 +73,7 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
     textDecoration: 'none',
-    color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
+    color:  theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
@@ -90,8 +89,8 @@ const useStyles = createStyles((theme) => ({
 
   linkActive: {
     '&, &:hover': {
-      backgroundColor: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).background,
-      color: theme.fn.variant({ variant: 'light', color: theme.primaryColor }).color,
+      backgroundColor: "#f3eee9ff",
+      color: theme.colors.gray[7],
     },
   },
 }));
@@ -105,9 +104,6 @@ const StyledPaper = styled(Paper)<PaperProps>`
 min-height:100vh ;
 `
 
-const Space = styled.div`
-  margin-top: 2rem;
-`
 
 interface HeaderResponsiveProps {
   links: { link: string; label: string }[];

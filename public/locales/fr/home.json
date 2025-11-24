@@ -1,7 +1,8 @@
 {
-    "title": "Bienvenue à Casa Rustica De Haan",
-    "description": "Si vous recherchez l'endroit idéal pour des vacances en famille sur la magnifique côte belge, ne cherchez pas plus loin. Notre charmante maison de vacances à De Haan est l'endroit parfait pour vous et vos proches, pouvant accueillir jusqu'à 8 personnes.",
-    "features": "Caractéristiques de la maison :",
+    "title": "Une maison familiale chaleureuse à De Haan",
+    "description": "Vivez confort et tranquillité",
+    "about": "À propos de la maison",
+    "aboutDescription": "Située dans la charmante ville côtière de De Haan, cette maison familiale cosy et rustique offre le parfait mélange de confort et de caractère. À seulement quelques pas de la plage, c’est un refuge idéal pour les familles souhaitant se détendre au bord de la mer. Avec ses intérieurs chaleureux et accueillants et son cadre pittoresque, chaque séjour promet tranquillité et moments mémorables au bord de l’eau.",
     "spacious": "Espace spacieux",
     "spaciousDescription": "Notre spacieuse maison familiale offre amplement d'espace pour toute la famille (8 à 10 personnes dans 4 chambres) pour se détendre et profiter de la côte belge ensemble.",
     "modern": "<strong>Confort moderne :</strong> Vous trouverez tout le confort moderne pour des vacances relaxantes ici, avec une cuisine entièrement équipée, des chambres confortables et un salon accueillant.",
@@ -9,6 +10,9 @@
     "gardenDescription": "Détendez-vous dans notre jardin paisible ou sur la terrasse ensoleillée tout en dégustant un barbecue en famille ou en profitant du soleil.",
     "beach": "Proche de la plage",
     "beachDescription": "À quelques pas de la plage de De Haan, vous pourrez profiter de journées ensoleillées au bord de la mer et de promenades agréables le long de la plage.",
+    "tourism": "Décret Flamand sur l’Hébergement",
+"tourismDescription": "Cet hébergement est officiellement reconnu selon le Décret Flamand sur l’Hébergement et respecte pleinement toutes les normes de confort et de sécurité incendie. Les clients peuvent séjourner en toute confiance, sachant que l’établissement répond à toutes les exigences de qualité et de sécurité.",
+
     "family": "<strong>Pour toute la famille :</strong> Notre maison est conçue pour accueillir les familles, avec des équipements adaptés aux enfants, notamment des lits de bébé et des jeux de société pour des moments de qualité ensemble.",
     "book": "<strong>Réservez dès aujourd'hui</strong> pour des vacances inoubliables à De Haan, où vous pourrez vous détendre, vous amuser et créer des souvenirs précieux en famille. Nous sommes impatients de vous accueillir à Casa Rustica De Haan pour une expérience balnéaire exceptionnelle.",
     "house": "La maison",
