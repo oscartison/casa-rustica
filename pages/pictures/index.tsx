@@ -7,7 +7,6 @@ import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'next-i18next';
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
-  margin-top: ${props => props.$isMobile ? '2rem' : "4rem"};
   height: fit-content;
   background: rgba(255,255,255,0.8);
   display:flex;

@@ -5,8 +5,8 @@ import { Container, Group, Paper,Text } from '@mantine/core';
 import Link from 'next/link';
 
 const Main = styled.main`
-  min-height: 100vh;
-  max-width: 100vw;
+  min-height: 100dvh;
+  min-width: 71.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,11 +31,13 @@ const Layout = ({ children }) => {
           minWidth: "80vw",
           margin: "0 auto",
           marginBottom: "2rem",
-          // paddingBottom: 40,
         }}
       >
       <HeaderResponsive links={[{ link: '/', label: t('home') },{ link: '/pictures', label: t('pictures') },{ link: '/contact', label: t('contact') }]}/>
-      <Content>{children}</Content>
+      <Content style={{
+          minWidth: "71.25rem",
+          
+        }}>{children}</Content>
       <Container size="lg" bg="#ccb9a0ff" py={30} miw="80vw" style={{borderRadius:"0.5rem"}}
 >
         <Group position="apart" maw="71.25rem" m="auto">

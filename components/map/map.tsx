@@ -51,7 +51,7 @@ marker.bindPopup("Casa Rustica!");
     }, [])
 
   return  <><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-/> <div id="map"style={{width:"50vw", height:"500px", marginBottom:"2rem"}}></div></>
+/> <div id="map"style={{width:"80%", height:"500px", marginBottom:"2rem"}}></div></>
 }
 
 export default Map

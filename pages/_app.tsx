@@ -12,7 +12,6 @@ const MyApp = ({ Component, pageProps }) => (
     withNormalizeCSS
   
   >
-
     <Layout>
       <Component {...pageProps} />
     </Layout>

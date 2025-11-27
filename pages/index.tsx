@@ -19,7 +19,6 @@ const TextContainer = styled.div<{$isMobile: boolean}>`
   
   justify-content:center;
   padding-bottom: 6rem;
-  
 `
 
 export default function LandingPage({ip}: {ip:string}) {

@@ -20,10 +20,9 @@ const DynamicMap = dynamic(() => import("../../components/map/map"), {
 
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
-  width: 1000px;
+  width: 100%;
   margin: 3rem auto ;
   height: fit-content;
-  background-color: #f2e9dd;
   border-radius: 1rem;
   display:flex;
   flex-direction: column;
