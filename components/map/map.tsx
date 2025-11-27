@@ -1,52 +1,57 @@
-"use client";
+"use client"
+import { useEffect, useRef } from "react"
+import L from "leaflet"
+import markerPng from "./marker.png"
+const Map = () => {
 
-const MapContainer = dynamic(
-  () => import("react-leaflet").then(mod => mod.MapContainer),
-  { ssr: false }
-);
-const TileLayer = dynamic(
-  () => import("react-leaflet").then(mod => mod.TileLayer),
-  { ssr: false }
-);
-const Marker = dynamic(
-  () => import("react-leaflet").then(mod => mod.Marker),
-  { ssr: false }
-);
-const Popup = dynamic(
-  () => import("react-leaflet").then(mod => mod.Popup),
-  { ssr: false }
+const mapRef = useRef<L.Map | null>(null)
 
-);
-import L from "leaflet";
+useEffect(() => {
+  if (typeof window === "undefined") {
+       return
+    }
+    if (mapRef.current) {
+      mapRef.current.remove()
+      mapRef.current = null
+    }
 
-import "leaflet/dist/leaflet.css";
-import dynamic from "next/dynamic";
+    const map = L.map("map", {
+      center: [51.26865033993269, 3.0283565463387294], 
+      zoom: 14, 
+      scrollWheelZoom: true,
+    })
 
-// Custom marker fix (Leaflet default markers break in Next.js)
-const markerIcon = new L.Icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-  iconRetinaUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png",
-  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-});
+    L.tileLayer("https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      {attribution: "Casa Rustica",}).addTo(map)
+        L.Icon.Default.mergeOptions({
+           iconRetinaUrl: null,
+       iconUrl: null,
+       shadowUrl: null,
+   })
+    const customIcon = L.icon({
+       iconUrl: markerPng.src,
+       
+       iconSize: [30, 30],
+       iconAnchor: [15, 30],
+       popupAnchor: [0, -30],
+    })
+const marker = L.marker([51.26865033993269, 3.0283565463387294],{
+            icon: customIcon,
+        }).addTo(map);
+marker.bindPopup("Casa Rustica!");
+    mapRef.current = map
 
-export default function MapComponent() {
-  const position: [number, number] = [51.27405, 3.03991];
+    return () => {
+        if (mapRef.current) {
+            mapRef.current.remove()
+            mapRef.current = null
+        }
+    }
 
-  return (
-      <MapContainer center={position} zoom={13} scrollWheelZoom={false}         style={{ height: "40vh", width: "100%" }}
->
+    }, [])
 
-       <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      /> 
-
-       <Marker position={position} >
-        <Popup>
-          Sparrenboslaan 26<br />8420 De Haan
-        </Popup>
-      </Marker> 
-     </MapContainer> 
-  );
+  return  <><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+/> <div id="map"style={{width:"50vw", height:"500px", marginBottom:"2rem"}}></div></>
 }
+
+export default Map

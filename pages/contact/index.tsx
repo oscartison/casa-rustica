@@ -1,36 +1,35 @@
 import {  BackgroundImageProps, Container, Divider } from '@mantine/core';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Home from '../../app/images/house/house.webp'
 import styled from 'styled-components';
 
 import Seo from '../../components/_common/seo';
 import { ContactUs } from '../../components/contact';
 import { useMediaQuery } from '@mantine/hooks';
 import { useTranslation } from 'next-i18next';
-import MapComponent from '../../components/map/map';
+import dynamic from "next/dynamic";
+
+const DynamicMap = dynamic(() => import("../../components/map/map"), {
+  loading: () => (
+    <div className="h-full w-full flex justify-center items-center text-3xl text-black/40">
+      <p>Loading...</p>
+    </div>
+  ),
+  ssr: false,
+});
 
 
-const StyledBackImage = styled(Container)<BackgroundImageProps>`
-  height: calc(100vh - 3rem);
-  max-height: calc(100vh - 3rem);
-  min-width: 80vw;
-  margin-top: 3rem;
-  overflow-y: scroll;
-  backdrop-filter: blur(5px);
-  display:flex;
-  justify-content:center;
-  align-items: flex-start;
-`;
 
 const TextContainer = styled.div<{$isMobile: boolean}>`
   width: 1000px;
-  margin-top: ${props => props.$isMobile ? '0' : "8rem"};
+  margin: 3rem auto ;
   height: fit-content;
   background-color: #f2e9dd;
   border-radius: 1rem;
   display:flex;
   flex-direction: column;
   justify-content:center;
+  align-items: center;
+  gap: 2rem;
 `
 
 const Contact = () => {
@@ -40,13 +39,11 @@ const Contact = () => {
     return (
       <>
       <Seo title={`${t('contact')} - Casa Rustica`} />
-      <StyledBackImage src={Home.src}>
       <TextContainer $isMobile={isMobile}>
         <ContactUs/>
         <Divider my="md" />
-        <MapComponent />
+        <DynamicMap />
       </TextContainer>
-      </StyledBackImage>
   </>
   );
 };
