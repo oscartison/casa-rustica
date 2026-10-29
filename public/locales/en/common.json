@@ -1,8 +1,14 @@
 {
-    "Coming Soon ...": "Coming soon ...",
     "home": "Home",
-    "about": "About",
-    "pictures": "Pictures",
+    "pictures": "Photos",
+    "prices": "Availability",
     "contact": "Contact",
-    "prices": "Prices"
+    "about": "About",
+    "bookNow": "Book your stay",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "footerTagline": "A warm, characterful family home in De Haan, made for slow days by the sea.",
+    "explore": "Explore",
+    "getInTouch": "Get in touch",
+    "lodgingDecree": "Recognised under the Flemish Lodging Decree"
 }

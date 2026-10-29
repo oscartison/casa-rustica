@@ -2,41 +2,42 @@
 
 import { useEffect, useRef } from "react";
 
-// LightGallery
-import lightGallery from "lightgallery";
-import lgZoom from "lightgallery/plugins/zoom";
-import lgShare from "lightgallery/plugins/share";
-import lgHash from "lightgallery/plugins/hash";
-
 // Styles
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
-import "lightgallery/css/lg-share.css";
-
+import "lightgallery/css/lg-thumbnail.css";
 
 export default function GalleryClient({ children }: { children: React.ReactNode }) {
   const galleryRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!galleryRef.current) return;
+    let lg;
+    let cancelled = false;
 
-    // Init LightGallery
-    const lg = lightGallery(galleryRef.current, {
-      plugins: [lgZoom, lgShare, lgHash],
-      speed: 500,
+    // LightGallery touches `window`, so it is only loaded in the browser
+    Promise.all([
+      import("lightgallery"),
+      import("lightgallery/plugins/zoom"),
+      import("lightgallery/plugins/thumbnail")
+    ]).then(([{ default: lightGallery }, { default: lgZoom }, { default: lgThumbnail }]) => {
+      if (cancelled || !galleryRef.current) return;
+
+      // One gallery for every section so visitors can swipe through the whole house
+      lg = lightGallery(galleryRef.current, {
+        plugins: [lgZoom, lgThumbnail],
+        selector: ".gallery-item",
+        exThumbImage: "data-thumb",
+        speed: 500,
+        download: false,
+        mobileSettings: { controls: false, showCloseIcon: true, download: false }
+      });
     });
 
-
-
     return () => {
-      lg.destroy();
+      cancelled = true;
+      lg?.destroy();
     };
   }, []);
 
-  return (
-    <div ref={galleryRef}  style={{maxWidth: "80vw"}}>
-      <div className="grid-sizer" style={{maxWidth: "80vw"}}></div>
-      {children}
-    </div>
-  );
+  return <div ref={galleryRef}>{children}</div>;
 }

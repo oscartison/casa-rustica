@@ -1,8 +1,14 @@
 {
-    "Coming Soon ...": "En construction...",
     "home": "Accueil",
-    "about": "A propos",
     "pictures": "Photos",
+    "prices": "Disponibilités",
     "contact": "Contact",
-    "prices": "Prix"
+    "about": "À propos",
+    "bookNow": "Réserver",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "footerTagline": "Une maison familiale chaleureuse et pleine de caractère à De Haan, pensée pour des journées douces au bord de la mer.",
+    "explore": "Découvrir",
+    "getInTouch": "Contact",
+    "lodgingDecree": "Reconnue selon le Décret flamand sur l'hébergement"
 }

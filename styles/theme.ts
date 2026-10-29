@@ -1,39 +1,42 @@
 // @ts-nocheck --- Get rid of pointless linting errors in this file
-import { css, styled } from 'styled-components';
+import { css } from 'styled-components';
 
 export const colors = {
-  white: '#FFF',
-  black: '#000',
-  text: '#2F2E2E',
-  lightBackground: '#F9F9F9',
-  details: '#8F8D8D',
-  detailsLight: '#E2DDDD',
-  primary: '#E30613',
-  transparent: '#00000000',
-  divider: '#DFD9D9',
-  cross: '#F5F5F5',
+  cream: '#FBF7F1',
+  sand: '#F3EADD',
+  linen: '#E9DCC9',
+  clay: '#B4643C',
+  clayDark: '#94502E',
+  olive: '#3D4636',
+  oliveDark: '#2C3327',
+  sage: '#8A9A7B',
+  text: '#2F2A25',
+  textSoft: '#6B6158',
+  white: '#FFFFFF',
+  border: 'rgba(47, 42, 37, 0.12)',
+};
+
+export const fonts = {
+  serif: 'var(--font-serif), Georgia, "Times New Roman", serif',
+  sans: 'var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+};
+
+export const radius = {
+  sm: '0.5rem',
+  md: '1rem',
+  lg: '1.75rem',
+};
+
+export const shadows = {
+  soft: '0 10px 30px -12px rgba(61, 45, 30, 0.25)',
+  lifted: '0 24px 60px -20px rgba(61, 45, 30, 0.35)',
 };
 
 export const screenSizes = {
   small: 480,
   medium: 768,
-  large: 1440,
+  large: 1100,
 };
-
-export const fontWeights = {
-  light: 300,
-  book: 400,
-  medium: 500,
-  semibold: 600,
-  bold: 700,
-  black: 800,
-  ultra: 900,
-};
-
-export enum Variant {
-  DRY_HIRE = 'DRY_HIRE',
-  SFX_PRODUCTIONS = 'SFX_PRODUCTIONS',
-}
 
 export const mediaQueries = {
   small: (...args: any) => css`
@@ -52,73 +55,3 @@ export const mediaQueries = {
     }
   `,
 };
-
-export const fonts = {
-  metropolis: {
-    src: [
-      {
-        path: './',
-        weight: '400',
-        style: 'normal',
-      },
-    ],
-  },
-};
-
-function makeTextStyle(
-  fontWeight = fontWeights.book,
-  fontSize = '1em',
-  letterSpacing = 0,
-  lineHeight = 'normal',
-) {
-  return css`
-    font-weight: ${fontWeight};
-    font-size: ${fontSize};
-    letter-spacing: ${letterSpacing};
-    line-height: ${lineHeight};
-  `;
-}
-
-export const Title = styled.h1`
-  font-family: 'Metropolis';
-  color: ${colors.black};
-  ${makeTextStyle(fontWeights.book, '2rem', '0', '1')};
-  ${mediaQueries.medium`
-    ${makeTextStyle(fontWeights.book, '4rem', '0', '1')};
-  `}
-  ${mediaQueries.large`
-    ${makeTextStyle(fontWeights.book, '7.5rem', '0', '1')};
-  `}
-`;
-export const Subtitle = styled.h2`
-  font-family: 'Metropolis';
-  color: ${colors.black};
-  ${makeTextStyle(fontWeights.book, '1.25rem', '0', '1.2')};
-  ${mediaQueries.medium`
-    ${makeTextStyle(fontWeights.book, '2rem', '0', '1.25')};
-  `}
-  ${mediaQueries.large`
-    ${makeTextStyle(fontWeights.black, '2rem', '0', '1.25')};
-  `}
-`;
-export const TextBox = styled.p`
-  font-family: 'Metropolis';
-  color: ${colors.black};
-  ${makeTextStyle(fontWeights.book, '1rem', '0', '1.5')};
-  ${mediaQueries.medium`
-    ${makeTextStyle(fontWeights.book, '1rem', '0', '1.5')};
-  `}
-  ${mediaQueries.large`
-    ${makeTextStyle(fontWeights.book, '1.5rem', '0', '1.333')};
-  `}
-`;
-export const SmallTextBox = styled.span`
-  font-family: 'Metropolis';
-  color: ${colors.black};
-  ${makeTextStyle(fontWeights.book, '0.75rem', '0', '1.333')};
-`;
-export const BigTextBox = styled.span`
-  font-family: 'Metropolis';
-  color: ${colors.black};
-  ${makeTextStyle(fontWeights.book, '1.5rem', '0', '1.5')};
-`;

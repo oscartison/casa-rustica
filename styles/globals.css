@@ -1,12 +1,22 @@
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: #fbf7f1;
+  color: #2f2a25;
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
-
+/* clip (not hidden) so body does not become its own scroll container */
+body {
+  overflow-x: clip;
+}
 
 a {
   color: inherit;
@@ -24,6 +34,7 @@ img {
 
 h1,
 h2,
+h3,
 p,
 ul {
   margin: 0;
@@ -34,121 +45,40 @@ ul {
   list-style: none;
 }
 
-button {
-  padding: 0.5rem 1rem;
-  font-weight: bold;
+::selection {
+  background: #e9dcc9;
 }
 
-/* FONTS */
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.black.otf');
-  font-weight: 800;
-  font-style: normal;
+:focus-visible {
+  outline: 2px solid #b4643c;
+  outline-offset: 3px;
 }
 
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.black-italic.otf');
-  font-weight: 800;
-  font-style: italic;
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.bold.otf');
-  font-weight: 700;
-  font-style: normal;
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.bold-italic.otf');
-  font-weight: 700;
-  font-style: italic;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.extra-bold.otf');
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.extra-bold-italic.otf');
-  font-weight: 900;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.medium-italic.otf');
-  font-weight: 400;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.light.otf');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.light-italic.otf');
-  font-weight: 300;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.medium.otf');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.medium-italic.otf');
-  font-weight: 500;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.regular.otf');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.thin.otf');
-  font-weight: 200;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.thin-italic.otf');
-  font-weight: 200;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.light.otf');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Metropolis';
-  src: url('../app/fonts/metropolis.light-italic.otf');
-  font-weight: 300;
-  font-style: italic;
+/* Leaflet map tweaks */
+.leaflet-container {
+  font-family: inherit;
 }

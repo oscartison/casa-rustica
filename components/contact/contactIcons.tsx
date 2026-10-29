@@ -1,43 +1,73 @@
-import { Text, Box, Stack, rem } from '@mantine/core';
-import { IconSun, IconPhone, IconMapPin, IconAt } from '@tabler/icons-react';
+import { IconAt, IconMapPin, IconPhone } from '@tabler/icons-react';
 import { useTranslation } from 'next-i18next';
-import classes from './ContactIcons.module.css';
+import styled from 'styled-components';
 
-interface ContactIconProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'title'> {
-  icon: typeof IconSun;
-  title: string;
-  description: React.ReactNode;
-}
+import { colors } from '../../styles/theme';
 
-function ContactIcon({ icon: Icon, title, description, ...others }: ContactIconProps) {
-    const {t} = useTranslation('home')
+const List = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+`;
 
-  return (
-    <div className={classes.wrapper} {...others}>
-      <Box mr="md">
-        <Icon style={{ width: rem(24), height: rem(24) }} />
-      </Box>
+const Item = styled.li`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 
-      <div>
-        <Text size="xs" className={classes.title}>
-          {t(title)}
-        </Text>
-        <Text className={classes.description}>{description}</Text>
-      </div>
-    </div>
-  );
-}
+  > span {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    background: rgba(251, 247, 241, 0.1);
+    color: ${colors.linen};
+  }
 
-const MOCKDATA = [
-    { title: 'email', description: 'info@casarustica.be', icon: IconAt },
-    { title: 'phone', description: '+324 75 85 63 19', icon: IconPhone },
-    { title: 'address', description: 'Sparrenboslaan 26, 8420 De Haan', icon: IconMapPin },
-  ];
+  small {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(251, 247, 241, 0.6);
+  }
 
+  a,
+  p {
+    font-size: 1.05rem;
+    color: ${colors.cream};
+  }
+
+  a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+`;
+
+const CONTACTS = [
+  { title: 'email', description: 'info@casarustica.be', href: 'mailto:info@casarustica.be', icon: IconAt },
+  { title: 'phone', description: '+32 475 85 63 19', href: 'tel:+32475856319', icon: IconPhone },
+  { title: 'address', description: 'Sparrenboslaan 26, 8420 De Haan', icon: IconMapPin },
+];
 
 export function ContactIconsList() {
- 
+  const { t } = useTranslation('home');
 
-  const items = MOCKDATA.map((item, index) => <ContactIcon key={index} {...item} />);
-  return <Stack>{items}</Stack>;
+  return (
+    <List>
+      {CONTACTS.map((item) => (
+        <Item key={item.title}>
+          <span>
+            <item.icon size={20} stroke={1.5} />
+          </span>
+          <div>
+            <small>{t(item.title)}</small>
+            {item.href ? <a href={item.href}>{item.description}</a> : <p>{item.description}</p>}
+          </div>
+        </Item>
+      ))}
+    </List>
+  );
 }

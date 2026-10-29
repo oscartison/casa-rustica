@@ -1,8 +1,14 @@
 {
-    "Coming Soon ...": "In onderhoud...",
     "home": "Home",
-    "about": "Info",
     "pictures": "Foto's",
+    "prices": "Beschikbaarheid",
     "contact": "Contact",
-    "prices": "Prijzen"
+    "about": "Over ons",
+    "bookNow": "Boek je verblijf",
+    "openMenu": "Menu openen",
+    "closeMenu": "Menu sluiten",
+    "footerTagline": "Een warm familiehuis vol karakter in De Haan, gemaakt voor trage dagen aan zee.",
+    "explore": "Ontdek",
+    "getInTouch": "Contact",
+    "lodgingDecree": "Erkend volgens het Vlaamse Logiesdecreet"
 }

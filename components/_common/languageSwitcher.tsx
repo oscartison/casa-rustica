@@ -1,93 +1,67 @@
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
+import styled from 'styled-components';
 
-import { useState } from 'react';
-import { createStyles, UnstyledButton, Menu, Image, Group, rem } from '@mantine/core';
-import { IconChevronDown } from '@tabler/icons-react';
+import { colors } from '../../styles/theme';
 
 const data = [
-  { label: 'English', path: 'en' },
-  { label: 'Nederlands', path: 'nl' },
-  { label: 'français', path: 'fr' },
+  { label: 'EN', name: 'English', path: 'en' },
+  { label: 'NL', name: 'Nederlands', path: 'nl' },
+  { label: 'FR', name: 'Français', path: 'fr' },
 ];
 
-const useStyles = createStyles((theme, { opened }: { opened: boolean }) => ({
-  control: {
-    zIndex: 100,
-    width: rem(120),
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    borderRadius: theme.radius.md,
-    border: `${rem(1)} solid ${
-      theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[2]
-    }`,
-    transition: 'background-color 150ms ease',
-    backgroundColor:
-      theme.colorScheme === 'dark'
-        ? theme.colors.dark[opened ? 5 : 6]
-        : opened
-        ? theme.colors.gray[0]
-        : theme.white,
+const Wrapper = styled.div<{ $light: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem;
+  border-radius: 999px;
+  border: 1px solid ${(props) => (props.$light ? 'rgba(251, 247, 241, 0.4)' : colors.border)};
+  transition: border-color 0.3s ease;
+`;
 
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[5] : theme.colors.gray[0],
-    },
-  },
+const Option = styled.button<{ $active: boolean; $light: boolean }>`
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  color: ${(props) =>
+    props.$active ? (props.$light ? colors.text : colors.cream) : props.$light ? colors.cream : colors.textSoft};
+  background: ${(props) => (props.$active ? (props.$light ? colors.cream : colors.olive) : 'transparent')};
 
-  label: {
-    fontWeight: 500,
-    fontSize: theme.fontSizes.sm,
-  },
+  &:hover {
+    color: ${(props) => (props.$active ? undefined : props.$light ? colors.white : colors.text)};
+  }
+`;
 
-  icon: {
-    transition: 'transform 150ms ease',
-    transform: opened ? 'rotate(180deg)' : 'rotate(0deg)',
-  },
-}));
-
-export function LanguagePicker() {
+export function LanguagePicker({ light = false }: { light?: boolean }) {
   const router = useRouter();
 
-  const [opened, setOpened] = useState(false);
-  const { classes } = useStyles({ opened });
-  const [selected, setSelected] = useState(data.find((el) => el.path === router.locale )?? data[0]);
-  const items = data.map((item) => (
-    <Menu.Item
-      onClick={() => {
-        setSelected(item);
-        router.push(
-          {
-            pathname: router.pathname,
-            query: router.query,
-          },
-          undefined,
-          { locale: item.path }
-        )
-      }}
-      key={item.label}
-    >
-      {item.label}
-    </Menu.Item>
-  ));
-
   return (
-    <Menu
-      onOpen={() => setOpened(true)}
-      onClose={() => setOpened(false)}
-      radius="md"
-      width="target"
-      withinPortal
-    >
-      <Menu.Target>
-        <UnstyledButton className={classes.control}>
-          <Group spacing="xs">
-            <span className={classes.label}>{selected.label}</span>
-          </Group>
-          <IconChevronDown  className={classes.icon} stroke={1.5} />
-        </UnstyledButton>
-      </Menu.Target>
-      <Menu.Dropdown>{items}</Menu.Dropdown>
-    </Menu>
-  )}
-
+    <Wrapper $light={light} role="group" aria-label="Language">
+      {data.map((item) => (
+        <Option
+          key={item.path}
+          type="button"
+          title={item.name}
+          aria-pressed={router.locale === item.path}
+          $active={router.locale === item.path}
+          $light={light}
+          onClick={() =>
+            router.push({ pathname: router.pathname, query: router.query }, undefined, {
+              locale: item.path,
+              scroll: false,
+            })
+          }
+        >
+          {item.label}
+        </Option>
+      ))}
+    </Wrapper>
+  );
+}

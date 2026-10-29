@@ -1,153 +1,285 @@
-import {
-  createStyles,
-  Header,
-  Container,
-  Group,
-  Burger,
-  Paper,
-  Transition,
-  rem,
-  PaperProps,
-} from '@mantine/core';
-import { useDisclosure } from '@mantine/hooks';
-import {useRouter} from 'next/router'; 
-import Logo from '../../app/logos/logo_name.png';
-import styled from 'styled-components';
-import Image from 'next/image';
-import { LanguagePicker } from './languageSwitcher';
+import * as React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import styled, { css } from 'styled-components';
 
+import { colors, fonts, mediaQueries, shadows } from '../../styles/theme';
+import { LanguagePicker } from './languageSwitcher';
+import { ButtonLink } from './ui';
 
-const HEADER_HEIGHT = rem(60);
-
-const useStyles = createStyles((theme) => ({
-
-  root: {
-   marginTop: '1rem',
-  },
-  dropdown: {
-    position: 'absolute',
-    top: HEADER_HEIGHT,
-    left: 0,
-    right: 0,
-    zIndex: 999,
-    borderTopRightRadius: 0,
-    borderTopLeftRadius: 0,
-    borderTopWidth: 0,
-    paddingTop: '10rem',
-    overflow: 'hidden',
-    display: 'flex',
-    flexDirection: 'column',
-    gap: rem(48),
-    alignItems: 'center',
-    minHeight: '100vh',
-    maxHeight:'100vh',
-
-    [theme.fn.largerThan('sm')]: {
-      display: 'none',
-    },
-  },
-
-  header: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    height: '100%',
-  },
-
-  links: {
-    [theme.fn.smallerThan('sm')]: {
-      display: 'none',
-    },
-  },
-
-  burger: {
-    [theme.fn.largerThan('sm')]: {
-      display: 'none',
-    },
-  },
-
-  link: {
-    display: 'block',
-    lineHeight: 1,
-    padding: `${rem(8)} ${rem(12)}`,
-    borderRadius: theme.radius.sm,
-    textDecoration: 'none',
-    color:  theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
-
-    '&:hover': {
-      backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
-    },
-
-    [theme.fn.smallerThan('sm')]: {
-      borderRadius: 0,
-      padding: theme.spacing.md,
-    },
-  },
-
-  linkActive: {
-    '&, &:hover': {
-      backgroundColor: "#f3eee9ff",
-      color: theme.colors.gray[7],
-    },
-  },
-}));
-
-const StyledLogo = styled(Image)`
-  height: 2.5rem;
-  width: 14rem;
-`;
-
-const StyledPaper = styled(Paper)<PaperProps>`
-min-height:100vh ;
-`
-
-
-interface HeaderResponsiveProps {
+interface HeaderProps {
   links: { link: string; label: string }[];
+  transparentOnTop?: boolean;
 }
 
-export function HeaderResponsive({ links }: HeaderResponsiveProps) {
-  const [opened, { toggle, close }] = useDisclosure(false);
-  const { classes, cx } = useStyles();
+const Bar = styled.header<{ $solid: boolean }>`
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 200;
+  transition: background-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease, padding 0.35s ease;
+  color: ${colors.cream};
+  padding: 1.1rem 0;
 
-  const router = useRouter() 
-  const active = router.pathname;
+  ${(props) =>
+    props.$solid &&
+    css`
+      background: rgba(251, 247, 241, 0.94);
+      backdrop-filter: saturate(1.4) blur(10px);
+      box-shadow: 0 1px 0 ${colors.border};
+      color: ${colors.text};
+      padding: 0.7rem 0;
+    `}
+`;
 
-  const items = links.map((link) => (
-    <Link
-      key={link.label}
-      onClick={close}
-      href={link.link}
-      className={cx(classes.link, { [classes.linkActive]: active === link.link })}
-    >
-      {link.label}
-    </Link>
-  ));
+const Inner = styled.div`
+  max-width: 75rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+
+  ${mediaQueries.medium`
+    padding: 0 2rem;
+  `}
+`;
+
+const Brand = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  position: relative;
+  z-index: 2;
+
+  strong {
+    font-family: ${fonts.serif};
+    font-weight: 500;
+    font-size: 1.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  span {
+    margin-top: 0.3rem;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+`;
+
+const Nav = styled.nav`
+  display: none;
+  align-items: center;
+  gap: 2rem;
+
+  ${mediaQueries.large`
+    display: flex;
+  `}
+`;
+
+const NavLink = styled(Link)<{ $active: boolean }>`
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.4rem 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1.5px;
+    background: currentColor;
+    transform: scaleX(${(props) => (props.$active ? 1 : 0)});
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+`;
+
+const Actions = styled.div`
+  display: none;
+  align-items: center;
+  gap: 1rem;
+
+  ${mediaQueries.large`
+    display: flex;
+  `}
+`;
+
+const SmallCta = styled(ButtonLink)`
+  min-height: 2.6rem;
+  padding: 0 1.25rem;
+  font-size: 0.9rem;
+`;
+
+const Burger = styled.button<{ $open: boolean }>`
+  position: relative;
+  z-index: 2;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+
+  ${mediaQueries.large`
+    display: none;
+  `}
+
+  span {
+    position: absolute;
+    left: 0.6rem;
+    right: 0.6rem;
+    height: 1.5px;
+    background: currentColor;
+    transition: transform 0.3s ease, opacity 0.3s ease, top 0.3s ease;
+  }
+
+  span:nth-child(1) {
+    top: ${(props) => (props.$open ? '50%' : '35%')};
+    transform: ${(props) => (props.$open ? 'rotate(45deg)' : 'none')};
+  }
+  span:nth-child(2) {
+    top: 50%;
+    opacity: ${(props) => (props.$open ? 0 : 1)};
+  }
+  span:nth-child(3) {
+    top: ${(props) => (props.$open ? '50%' : '65%')};
+    transform: ${(props) => (props.$open ? 'rotate(-45deg)' : 'none')};
+  }
+`;
+
+const MobileMenu = styled.div<{ $open: boolean }>`
+  position: fixed;
+  inset: 0;
+  z-index: 190;
+  background: ${colors.cream};
+  color: ${colors.text};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 6rem 1.75rem 2.5rem;
+  opacity: ${(props) => (props.$open ? 1 : 0)};
+  visibility: ${(props) => (props.$open ? 'visible' : 'hidden')};
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  box-shadow: ${shadows.soft};
+
+  ${mediaQueries.large`
+    display: none;
+  `}
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  nav a {
+    font-family: ${fonts.serif};
+    font-size: 2.25rem;
+    line-height: 1.1;
+  }
+
+  nav a[aria-current='page'] {
+    font-style: italic;
+    color: ${colors.clay};
+  }
+`;
+
+export function HeaderResponsive({ links, transparentOnTop = false }: HeaderProps) {
+  const { t } = useTranslation('common');
+  const router = useRouter();
+  const [open, setOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  React.useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  React.useEffect(() => {
+    const close = () => setOpen(false);
+    router.events.on('routeChangeStart', close);
+    return () => router.events.off('routeChangeStart', close);
+  }, [router.events]);
+
+  const solid = !transparentOnTop || scrolled || open;
 
   return (
-    <Header height={HEADER_HEIGHT} mb={0} className={classes.root}>
-      <Container className={classes.header}>
-      <Link href="/"><StyledLogo src={Logo} alt="logo" /></Link>
-        <Group spacing={5} className={classes.links}>
-          {items}
-        </Group>
-        <div className={classes.links}>
-          <LanguagePicker />
-          </div>
-        <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
+    <>
+      <Bar $solid={solid}>
+        <Inner>
+          <Brand href="/" aria-label="Casa Rustica">
+            <strong>Casa Rustica</strong>
+            <span>De Haan</span>
+          </Brand>
 
-        <Transition transition="pop-top-right" duration={200} mounted={opened}>
-          {(styles) => (
-            <StyledPaper className={classes.dropdown} withBorder style={styles}>
-              {items}
-              <LanguagePicker />
-            </StyledPaper>
-          )}
-        </Transition>
-      </Container>
-    </Header>
+          <Nav aria-label="Main">
+            {links.map((link) => (
+              <NavLink key={link.link} href={link.link} $active={router.pathname === link.link}>
+                {link.label}
+              </NavLink>
+            ))}
+          </Nav>
+
+          <Actions>
+            <LanguagePicker light={!solid} />
+            <SmallCta href="/prices">{t('bookNow')}</SmallCta>
+          </Actions>
+
+          <Burger
+            type="button"
+            $open={open}
+            aria-label={open ? t('closeMenu') : t('openMenu')}
+            aria-expanded={open}
+            onClick={() => setOpen((value) => !value)}
+          >
+            <span />
+            <span />
+            <span />
+          </Burger>
+        </Inner>
+      </Bar>
+
+      <MobileMenu $open={open} aria-hidden={!open}>
+        <nav aria-label="Mobile">
+          {links.map((link) => (
+            <Link
+              key={link.link}
+              href={link.link}
+              tabIndex={open ? 0 : -1}
+              aria-current={router.pathname === link.link ? 'page' : undefined}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </nav>
+        <div>
+          <LanguagePicker />
+        </div>
+        <ButtonLink href="/prices" tabIndex={open ? 0 : -1}>
+          {t('bookNow')}
+        </ButtonLink>
+      </MobileMenu>
+    </>
   );
 }

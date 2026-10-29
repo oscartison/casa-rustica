@@ -1,400 +1,97 @@
-// @ts-nocheck
+import * as React from "react";
+import { Trans, useTranslation } from "next-i18next";
+import { IconCalendarWeek, IconMessageCircle, IconSparkles, IconSun } from "@tabler/icons-react";
+import styled from "styled-components";
 
-import Link from 'next/link';
-import {
-  Text,
-  Container,
-  useMantineTheme,
-  Title,
-  Group,
-  Stack,
-  Box,
-  Button,
-  Divider,
-  Flex,
-  List
-} from "@mantine/core";
-import { useTranslation } from 'next-i18next';
-import React from "react";
-import {  CalendarComponent } from './calendar';
-import { useDisclosure, useCounter } from '@mantine/hooks';
+import { colors, fonts, mediaQueries, radius } from "../../styles/theme";
+import Reveal from "../_common/reveal";
+import { Container, Eyebrow, Heading, PageIntro, Lead, Section } from "../_common/ui";
+import { AvailabilityCalendar } from "./calendar";
 
-const PricesComponent = ({bookings}) => {
-  const theme = useMantineTheme();
+const goodToKnow = [
+  { key: "springAutumn", icon: IconSun },
+  { key: "summer", icon: IconCalendarWeek },
+  { key: "cleaning", icon: IconSparkles },
+  { key: "quote", icon: IconMessageCircle }
+];
+
+const Info = styled.div`
+  display: grid;
+  gap: 1rem;
+  margin-top: 2.5rem;
+
+  ${mediaQueries.medium`
+    grid-template-columns: repeat(2, 1fr);
+  `}
+
+  ${mediaQueries.large`
+    grid-template-columns: repeat(4, 1fr);
+  `}
+`;
+
+const InfoItem = styled.div`
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: ${radius.md};
+  background: ${colors.sand};
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: ${colors.textSoft};
+
+  svg {
+    color: ${colors.clay};
+  }
+
+  h3 {
+    margin: 0.85rem 0 0.4rem;
+    font-family: ${fonts.serif};
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: ${colors.text};
+  }
+`;
+
+const PricesComponent = ({ bookings }) => {
   const { t } = useTranslation("prices");
 
-  const [opened, { close, open }] = useDisclosure(false);
-
   return (
-    <Container size="lg" py="xl" >
-      <CalendarComponent open={opened} close={close} bookings={bookings}/>
-      <Title>{t("prices")}</Title>
-      <Flex sx={{ zIndex: 50 }} pt="10%">
-        <Stack spacing={40}>
-          <Group>
-            <Flex
-              align={"center"}
-              direction={{ base: "column", sm: "row" }}
-              color={"hsl(232, 13%, 33%)"}
-              gap={{ base: "1.5rem", sm: 0 }}
-            >
-              <Box
-                sx={{
-                  boxShadow: "0px 30px 50px -7px rgba(0,0,0,0.1)",
-                  height: "26rem",
-                  width: "17rem",
-                  paddingInline: "1.5rem",
-                  backgroundColor:
-                    theme.colorScheme === "dark"
-                      ? theme.colors.dark[5]
-                      : "white",
-                  borderRadius: "0.7rem 0 0 0.7rem",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+    <>
+      <PageIntro>
+        <Container $narrow>
+          <Eyebrow>{t("eyebrow")}</Eyebrow>
+          <h1>
+            <Trans t={t} i18nKey="title" components={{ em: <em /> }} />
+          </h1>
+          <Lead $center>{t("description")}</Lead>
+        </Container>
+      </PageIntro>
 
-                  "@media (max-width: 755px)": {
-                    width: "19rem",
-                    borderRadius: "0.7rem"
-                  },
-                  "@media (min-width: 756px) and (max-width: 820px)": {
-                    width: "15rem",
-                    borderRadius: "0.7rem 0 0 0.7rem"
-                  }
-                }}
-              >
-                <Stack w={"100%"} align={"center"} spacing={20}>
-                  <Text
-                    sx={{
-                      fontWeight: 700,
-                      color:
-                        theme.colorScheme === "dark"
-                          ? theme.colors.dark[1]
-                          : "hsl(233, 13%, 49%)"
-                    }}
-                    fz={"md"}
-                  >
-                    {t("low season")}
-                  </Text>
-                  <Title
-                    order={2}
-                    sx={{
-                      color:
-                        theme.colorScheme === "dark"
-                          ? "white"
-                          : "hsl(232, 13%, 33%)",
-                      fontSize: 50,
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 5
-                    }}
-                  >
-                    <Text fz={"2rem"}>€</Text>
-                    225
-                  </Title>
-                  <Text fz={"1rem"}>/{t("night")}</Text>
+      <Section id="availability">
+        <Container>
+          <Reveal>
+            <AvailabilityCalendar bookings={bookings} />
+          </Reveal>
 
-                  <Stack
-                    w={"100%"}
-                    align="center"
-                    spacing={10}
-                    sx={{
-                      color:
-                        theme.colorScheme === "light" && "hsl(233, 13%, 49%)"
-                    }}
-                  >
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "gray",
-                        opacity: theme.colorScheme === "dark" && 0.7
-                      }}
-                    />
-                    <Text fz={"sm"} align="center" fw={600}>
-                      {t(
-                        "Weekdays in April, May, June, September and October"
-                      )}
-                    </Text>
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "gray",
-                        opacity: theme.colorScheme === "dark" && 0.7
-                      }}
-                    />
-                    <Text fz={"sm"} fw={600}>
-                      {t("Sunday to thursday")}
-                    </Text>
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "gray",
-                        opacity: theme.colorScheme === "dark" && 0.7
-                      }}
-                    />
-                    <Text fz={"sm"} fw={600}>
-                      {t("Min 2 nights")}
-                    </Text>
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "gray",
-                        opacity: theme.colorScheme === "dark" && 0.7
-                      }}
-                    />
-                  </Stack>
-                 
-
-                  <Button
-                    variant="gradient"
-                    gradient={{
-                      from: "hsl(240, 3.9106145251396653%, 64.90196078431372%)",
-                      to: "hsl(240, 10.344827586206897%, 22.745098039215687%)"
-                    }}
-                    onClick={open}
-                    w="100%"
-                  >
-                    {t("Check availabilities")}
-                  </Button>
-                </Stack>
-              </Box>
-              <Box
-                sx={{
-                  boxShadow: "0px 30px 50px -7px rgba(0,0,0,0.1)",
-                  height: "25rem",
-                  width: "19rem",
-                  paddingInline: "1.5rem",
-                  background:
-                    "linear-gradient(to bottom right, hsl(240, 3.9106145251396653%, 64.90196078431372%), hsl(240, 10.344827586206897%, 22.745098039215687%))",
-                  color: "white",
-                  borderRadius: "0.7rem",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-
-                  "@media (min-width: 756px) and (max-width: 820px)": {
-                    width: "15rem",
-                    borderRadius: "0.7rem"
-                  }
-                }}
-              >
-                <Stack w={"100%"} align={"center"} spacing={20}>
-                  <Text
-                    sx={{
-                      fontWeight: 700
-                    }}
-                    fz={"md"}
-                  >
-                    {t("high season")}
-                  </Text>
-                  <Title
-                    order={2}
-                    sx={{
-                      fontSize: 50,
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 5
-                    }}
-                  >
-                    <Text fz={"2rem"}>€</Text>
-                    260
-                  </Title>
-                  <Text fz={"1rem"}>/{t("night")}</Text>
-                  <Stack w={"100%"} align="center" spacing={10}>
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "white",
-                        opacity: theme.colorScheme === "dark" && 0.6
-                      }}
-                    />
-                    <Text fz={"sm"} fw={600}>
-                      {t("Week in July and August")}
-                    </Text>
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "white",
-                        opacity: theme.colorScheme === "dark" && 0.6
-                      }}
-                    />
-                    <Text fz={"sm"} fw={600}>
-                      {t("Arrive on saturday")}
-                    </Text>
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "white",
-                        opacity: theme.colorScheme === "dark" && 0.6
-                      }}
-                    />
-                    <Text fz={"sm"} fw={600}>
-                      {t("Min 7 nights")}
-                    </Text>
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "white",
-                        opacity: theme.colorScheme === "dark" && 0.6
-                      }}
-                    />
-                  </Stack>
-
-                  <Button
-                    sx={{
-                      backgroundColor: "white",
-                      color:
-                        "hsl(240, 10.344827586206897%, 22.745098039215687%)",
-
-                      "&:hover": {
-                        backgroundColor: "white",
-                        opacity: 0.95
-                      }
-                    }}
-                    w="100%"
-                    onClick={open}
-                  >
-                    {t("Check availabilities")}
-                  </Button>
-                </Stack>
-              </Box>
-              <Box
-                sx={{
-                  boxShadow: "0px 30px 50px -7px rgba(0,0,0,0.1)",
-                  height: "26rem",
-                  width: "18rem",
-                  paddingInline: "1.5rem",
-                  backgroundColor:
-                    theme.colorScheme === "dark"
-                      ? theme.colors.dark[5]
-                      : "white",
-                  borderRadius: "0 0.7rem 0.7rem 0",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-
-                  "@media (max-width: 755px)": {
-                    width: "19rem",
-                    borderRadius: "0.7rem"
-                  },
-                  "@media (min-width: 756px) and (max-width: 820px)": {
-                    width: "15rem",
-                    borderRadius: "0 0.7rem 0.7rem 0"
-                  }
-                }}
-              >
-                <Stack w={"100%"} align={"center"} spacing={20}>
-                  <Text
-                    sx={{
-                      fontWeight: 700,
-                      color:
-                        theme.colorScheme === "dark"
-                          ? theme.colors.dark[1]
-                          : "hsl(233, 13%, 49%)"
-                    }}
-                    fz={"md"}
-                  >
-                    {t("mid season")}
-                  </Text>
-                  <Title
-                    order={2}
-                    sx={{
-                      color:
-                        theme.colorScheme === "dark"
-                          ? "white"
-                          : "hsl(232, 13%, 33%)",
-                      fontSize: 50,
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 5
-                    }}
-                  >
-                    <Text fz={"2rem"}>€</Text>
-                    250
-                  </Title>
-                  <Text fz={"1rem"}>/{t("night")}</Text>
-                  <Stack
-                    w={"100%"}
-                    align="center"
-                    spacing={10}
-                    sx={{
-                      color:
-                        theme.colorScheme === "light" && "hsl(233, 13%, 49%)"
-                    }}
-                  >
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "gray",
-                        opacity: theme.colorScheme === "dark" && 0.7
-                      }}
-                    />
-                    <Text fz={"sm"} align="center" fw={600}>
-                      {t("Weekend in April, May, June, September and October")}
-                    </Text>
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "gray",
-                        opacity: theme.colorScheme === "dark" && 0.7
-                      }}
-                    />
-                    <Text fz={"sm"} fw={600}>
-                      {t("Arrive on friday")}
-                    </Text>
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "gray",
-                        opacity: theme.colorScheme === "dark" && 0.7
-                      }}
-                    />
-                    <Text fz={"sm"} fw={600}>
-                      {t("Min 2 nights")}
-                    </Text>
-                    <Divider
-                      sx={{
-                        width: "100%",
-                        borderColor: theme.colorScheme === "dark" && "gray",
-                        opacity: theme.colorScheme === "dark" && 0.7
-                      }}
-                    />
-                  </Stack>
-
-                  <Button
-                  onClick={open}
-                    variant="gradient"
-                    gradient={{
-                      from: "hsl(240, 3.9106145251396653%, 64.90196078431372%)",
-                      to: "hsl(240, 10.344827586206897%, 22.745098039215687%)"
-                    }}
-                    w="100%"
-                  >
-                    {t("Check availabilities")}
-                  </Button>
-                </Stack>
-              </Box>
-            </Flex>
-          </Group>
-        </Stack>
-      </Flex>
-      <Divider m="3rem"/>
-      <Container sx={{ "@media (max-width: 755px)": {
-                    width: "19rem",
-                    borderRadius: "0.7rem"
-                  },
-                  "@media (min-width: 756px) and (max-width: 820px)": {
-                    width: "15rem",
-                    borderRadius: "0.7rem 0 0 0.7rem"
-                  }}} >
-      <Text fw={900}>{t('Extra info')}</Text>
-      <List listStyleType="initial">
-         <List.Item>{t('The cleaning fee is included in the price per night.')}</List.Item>
-         <List.Item>{t('A caution of 300€ will be reimbursed after the final inspection.')}</List.Item>
-         <List.Item>{t('For stays of 7 days and longer a final discount can be negotiated.')}</List.Item>
-      </List>
-      </Container>
-    </Container>
+          <Reveal>
+            <div style={{ marginTop: "5rem" }}>
+              <Eyebrow>{t("goodToKnowEyebrow")}</Eyebrow>
+              <Heading>
+                <Trans t={t} i18nKey="goodToKnowTitle" components={{ em: <em /> }} />
+              </Heading>
+            </div>
+            <Info>
+              {goodToKnow.map((item) => (
+                <InfoItem key={item.key}>
+                  <item.icon size={26} stroke={1.5} />
+                  <h3>{t(`${item.key}Title`)}</h3>
+                  <p>{t(`${item.key}Description`)}</p>
+                </InfoItem>
+              ))}
+            </Info>
+          </Reveal>
+        </Container>
+      </Section>
+    </>
   );
 };
 
